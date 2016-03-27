@@ -20,10 +20,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 MainActivityFragment tab1 = new MainActivityFragment();
                 return tab1;
             case 1:
-                CreatePost tab2 = new CreatePost();
+                CreatePlan tab2 = new CreatePlan();
                 return tab2;
             case 2:
-                Share tab3 = new Share();
+                ShareFragment tab3 = new ShareFragment();
                 return tab3;
             default:
                 return null;

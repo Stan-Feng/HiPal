@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Profile"));
-        tabLayout.addTab(tabLayout.newTab().setText("CreatePost"));
+        tabLayout.addTab(tabLayout.newTab().setText("CreatePlan"));
         tabLayout.addTab(tabLayout.newTab().setText("Share"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class CreatePost extends Fragment {
-    public CreatePost () {}
+public class ShareFragment extends Fragment {
 
+    public ShareFragment() {
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_create_post, container, false);
+        return inflater.inflate(R.layout.fragment_share, container, false);
     }
 }
