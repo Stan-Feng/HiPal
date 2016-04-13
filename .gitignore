@@ -8,4 +8,4 @@
 /captures
 /node_modules
 .idea
-/client/.local_properties
+local.properties
