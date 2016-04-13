@@ -1,0 +1,23 @@
+{
+  "name": "hi-pal",
+  "version": "0.1.0",
+  "description": "CSE208 Group Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stan-Feng/HiPal.git"
+  },
+  "keywords": [
+    "Android",
+    "NodeJs"
+  ],
+  "author": "Junwen Feng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stan-Feng/HiPal/issues"
+  },
+  "homepage": "https://github.com/Stan-Feng/HiPal#readme"
+}
