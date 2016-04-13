@@ -4,4 +4,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_country">Select Country</string>
+    <string-array name="country_name">
+        <item>Beijing</item>
+        <item>Tianjing</item>
+        <item>Suzhou</item>
+        <item>Shenzhen</item>
+        <item>Yunnan</item>
+        <item>Dalian</item>
+        <item>Hunan</item>
+        <item>Xian</item>
+        <item>Xiamen</item>
+        <item>Guangzhou</item>
+    </string-array>
 </resources>
