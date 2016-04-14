@@ -1,19 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="app.android.stanfeng.com.hipal.MainActivityFragment"
-    tools:showIn="@layout/activity_main">
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/profilePhoto"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/niuniu_duanwu"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="This is Profile Page"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_toEndOf="@+id/profilePhoto"
+        android:layout_marginStart="24dp"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_below="@+id/imageButton1"
+        android:layout_alignStart="@+id/nickname" />
+
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageButton1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/setting"
+        android:scaleType="fitXY"
+        android:background="#eee"
+        />
+
+    <TextView
+        android:id="@+id/futurePlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profilePhoto"
+        android:textSize="25dp"
+        android:textColor="#6ab8ef"
+        />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/futurePlan">
+    </ListView>
+
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageButton2"
+        android:src="@drawable/add"
+        android:layout_below="@+id/listView1"
+        android:scaleType="fitXY"
+        android:background="#eee"
+        />
+
+
+    <TextView
+        android:id="@+id/pastPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageButton2"
+        android:textSize="25dp"
+        android:textColor="#6ab8ef"
+
+        />
+
+
+    <ListView
+        android:id="@+id/listView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pastPlan">
+    </ListView>
 </RelativeLayout>
