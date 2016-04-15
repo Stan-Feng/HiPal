@@ -4,9 +4,8 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/build
+/client/build
 /captures
 /node_modules
 .idea
 local.properties
-client/build/intermediates/dex-cache/cache.xml
