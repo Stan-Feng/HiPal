@@ -9,3 +9,4 @@
 /node_modules
 .idea
 local.properties
+/client/build/intermediates/dex-cache/cache.xml
