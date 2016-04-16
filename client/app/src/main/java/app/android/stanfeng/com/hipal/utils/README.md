@@ -1,12 +1,15 @@
 ### How to use
 1. Copy AJAX.java and Callback.java to your package
 2. Change the package of both files to your package name
-3. AJAX request = new AJAX(String YourURL, String, YourMethod, HashMap<String, String> YourHeaders, Object YourTarget, new Callback() {
+3. Create Instance
+```java
+AJAX request = new AJAX(String YourURL, String, YourMethod, HashMap<String, String> YourHeaders, Object YourTarget, new Callback() {
       @Override
       public void exec(Object target, JSONArray results) {
         //Whatever you want to do after response arrived
       }
   })
+  ```
 4. call request.execute() to send out request
 
 **The param "target" in exec() method is the one you passed in "new AJAX", they are the same one**
