@@ -9,7 +9,8 @@
   })
 4. call request.execute() to send out request
 
-**The param "target" in exec() method is the on you passed in "new AJAX", they are the same one**
+**The param "target" in exec() method is the one you passed in "new AJAX", they are the same one**
+**If there's no reference pass the target reference to AJAX constructor, then it does not know who to manipulate**
 
 ### Example
 Suppose there's an adapter linked to a ListView
