@@ -1,7 +1,7 @@
 ### How to use
-1. Copy AJAX.java and Callback.java to your package
-2. Change the package of both files to your package name
-3. Create Instance
+* Copy AJAX.java and Callback.java to your package
+* Change the package of both files to your package name
+* Create Instance
 ```java
 AJAX request = new AJAX(String YourURL, String, YourMethod, HashMap<String, String> YourHeaders, Object YourTarget, new Callback() {
       @Override
@@ -10,7 +10,7 @@ AJAX request = new AJAX(String YourURL, String, YourMethod, HashMap<String, Stri
       }
   })
   ```
-4. call request.execute() to send out request
+* call request.execute() to send out request
 
 **The param "target" in exec() method is the one you passed in "new AJAX", they are the same one**
 
