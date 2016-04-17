@@ -1,3 +1,16 @@
+### Intro
+AJAX - Asynchronous JavaScript and XML.
+
+This class can help developer create async network functionality, focusing on JSON (JavaScript Object Notation) data structure.
+
+One AJAX instance stands for:
+
+      "Request to Server -> Waiting Server Response -> Dealing Response" task.
+
+Every time when you create an async task you need to override a method called **"exec"**, which will be executed when response arrived.
+
+ Also, you need to pass the Object(View, Adapter, or something else) you want to manipulate to the constructor so that "exec" know who is the target.
+
 ### How to use
 * Copy AJAX.java and Callback.java to your package
 * Change the package of both files to your package name
