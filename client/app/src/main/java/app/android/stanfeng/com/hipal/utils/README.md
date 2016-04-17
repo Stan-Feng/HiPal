@@ -16,7 +16,7 @@ AJAX request = new AJAX(String YourURL, String, YourMethod, HashMap<String, Stri
 
 **If there's no reference pass the target reference to AJAX constructor, then it does not know who to manipulate**
 
-**The data you received will be parsed to JSONArray, even though it is only one JSON objet, which will be JSONArray just has one element.**
+**The data you received will be parsed to JSONArray, even though it is only one JSON object**
 
 ### Limitations
 * Only supports "UPDATE" and "POST" HTTP verb for attaching data
