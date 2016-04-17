@@ -1,7 +1,7 @@
 ### Intro
 AJAX - Asynchronous JavaScript and XML.
 
-This class can help developer create async network functionality, focusing on JSON (JavaScript Object Notation) data structure.
+This class can help developer create **async network functionality**, focusing on **JSON (JavaScript Object Notation) data structure**.
 
 One AJAX instance stands for:
 
