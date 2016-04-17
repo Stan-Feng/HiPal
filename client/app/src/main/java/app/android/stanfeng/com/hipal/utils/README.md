@@ -18,44 +18,80 @@ AJAX request = new AJAX(String YourURL, String, YourMethod, HashMap<String, Stri
 
 **The data you received will be parsed to JSONArray, even though it is only one JSON objet, which will be JSONArray just has one element.**
 
+### Limitations
+* Only supports "UPDATE" and "POST" HTTP verb for attaching data
+* Attaching data structure is only **JSONObject**, not JSONArray, not String....
+* Does not deal with response headers
+* No error handler for bad response
+
 ### Example
-Suppose there's an adapter linked to a ListView
-I want to update the view by using the data from server
+* No attaching data example
 
-```java
-  ArrayAdapter<String> myAdapter = .......;
+  Suppose there's an adapter linked to a ListView
 
-  // Set HTTP request config
-  String method = "GET";
-  String url = "http://45.79.1.223:3000/api/posts/";
+  I want to update the view by using the data from server
+
+  ```java
+    ArrayAdapter<String> myAdapter = .......;
+
+    // Set HTTP request config
+    String method = "GET";
+    String url = "http://45.79.1.223:3000/api/posts/";
+    HashMap<String, String> headers = new HashMap<String, String>();
+    headers.put("Content-Type", "application/json");
+
+    AJAX req = new AJAX(url, method, headers, myAdapter, new Callback() {
+        @Override
+        // The parameter "target" in this case is corresponded to param "myAdapter" above
+        public void exec(Object target, JSONArray results) {
+            // Extract "title" property from results
+            String[] titles = new String[results.length()];
+            ArrayAdapter<String> adapter = (ArrayAdapter<String>) target;
+
+            for (int i = 0; i < results.length(); i++) {
+                try {
+                    titles[i] = results.getJSONObject(i).getString("title");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // update adapter
+            for (String title: titles) {
+                adapter.add(title);
+            }
+        }
+    });
+
+    // Sending the request
+    req.execute();
+  ```
+* Attaching data example
+   Sending request for user authentication
+ ```java
+  String url = "http://45.79.1.223:3000/auth/signin";
   HashMap<String, String> headers = new HashMap<String, String>();
   headers.put("Content-Type", "application/json");
+  JSONObject data = new JSONObject();
+  try {
+      data.put("username", "Junwen Feng");
+      data.put("password", "test123");
+  } catch (JSONException e) {
+      Log.e("JSON parse Error", e.toString());
+  }
 
-  AJAX req = new AJAX(url, method, headers, myAdapter, new Callback() {
+  // We do nothing on view layer in this example, so set the 5th param to "null"
+  AJAX req = new AJAX(url, "POST", headers, data, null, new Callback() {
       @Override
-      // The parameter "target" in this case is corresponded to param "myAdapter" above
       public void exec(Object target, JSONArray results) {
-          // Extract "title" property from results
-          String[] titles = new String[results.length()];
-          ArrayAdapter<String> adapter = (ArrayAdapter<String>) target;
-
-          for (int i = 0; i < results.length(); i++) {
-              try {
-                  titles[i] = results.getJSONObject(i).getString("title");
-              } catch (JSONException e) {
-                  e.printStackTrace();
-              }
-          }
-
-          // update adapter
-          for (String title: titles) {
-              adapter.add(title);
-          }
+          // Do nothing, just printout the response token
+          Log.w("Auth Response", results.toString());
+          // Sample Output:
+          // W/Auth Response: [{"response":"\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NzEwYTRjOWUxODdjYTA0MjQwNTQ3ZjUiLCJpYXQiOjE0NjA4NzcwNzcsImV4cCI6MTQ2MTc0MTA3N30.7cw68UNNm1uzSaS9NFIpCx7aPhsVe7eKmshwHG3DLyk\"\n"}]
       }
   });
-
-  // Sending the request
+  // Sending request
   req.execute();
-```
+ ```
 
 **You should call ajaxInstance.execute() then the request will be sent out !!!**

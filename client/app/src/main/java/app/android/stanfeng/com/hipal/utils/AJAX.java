@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class AJAX extends AsyncTask<String, Void, JSONArray> {
     private String url;
     private String method;
     private HashMap<String, String> headers;
+    private JSONObject data;
     private Callback callback;
     private Object target;
 
@@ -45,16 +47,17 @@ public class AJAX extends AsyncTask<String, Void, JSONArray> {
      * @param target - The target Object will be referenced in callback
      * @param callback - A method will be executed after response arrived
      */
-    public AJAX (String url, String method, HashMap<String, String> headers, Object target, Callback callback) {
+    public AJAX (String url, String method, HashMap<String, String> headers, JSONObject data,Object target, Callback callback) {
         this.url = url;
         this.method = method;
         this.headers = headers;
+        this.data = data;
         this.target = target;
         this.callback = callback;
     }
 
     @Override
-    protected JSONArray doInBackground(String... params){
+    protected JSONArray doInBackground(String... params) {
         String result = "";
         BufferedReader reader = null;
         HttpURLConnection urlConnection = null;
@@ -71,7 +74,25 @@ public class AJAX extends AsyncTask<String, Void, JSONArray> {
             for (String key: headers.keySet()) {
                 urlConnection.setRequestProperty(key, headers.get(key));
             }
-            InputStream inputStream = urlConnection.getInputStream();
+            // Set data
+            if (method.toUpperCase().equals("POST")
+                    || method.toUpperCase().equals("UPDATE")) {
+                urlConnection.setDoInput(true);
+                urlConnection.setDoOutput(true);
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(urlConnection.getOutputStream());
+                outputStreamWriter.write(data.toString());
+                outputStreamWriter.flush();
+            }
+
+            InputStream inputStream;
+            int status = urlConnection.getResponseCode();
+
+            Log.w("Response Code", Integer.toString(status));
+            if (status >= 400) {
+                inputStream = urlConnection.getErrorStream();
+            } else {
+                inputStream = urlConnection.getInputStream();
+            }
 
             StringBuffer buffer = new StringBuffer();
             if (inputStream == null) {
@@ -131,7 +152,13 @@ public class AJAX extends AsyncTask<String, Void, JSONArray> {
             result = new JSONArray(resultStr);
         } catch (JSONException e) {
             result = new JSONArray();
-            result.put(new JSONObject(resultStr));
+            try {
+                result.put(new JSONObject(resultStr));
+            } catch (JSONException e1) {
+                JSONObject obj = new JSONObject();
+                obj.put("response", resultStr);
+                result.put(obj);
+            }
         }
 
         return result;
