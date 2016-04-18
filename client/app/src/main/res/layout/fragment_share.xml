@@ -5,10 +5,54 @@
     tools:context=".ShareFragment">
 
     <TextView
+        android:id="@+id/city"
+        android:text="@string/select_city"
+        android:textSize="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/city"
+        android:layout_alignEnd="@+id/ListView" />
+
+    <TextView
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="_____________________________________"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentStart="true" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="This is shared page"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textSize="25dp"
+        android:textColor="#6ab8ef"
+        android:text="SuZhou"
+        android:lineSpacingExtra="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:id="@+id/ListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="10"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" >
+
+    </ListView>
+
 </RelativeLayout>
