@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+const api = require('./apis/api');
 const config = require('./config');
 
 // Connect to MongoDB
@@ -9,6 +10,12 @@ require('mongoose').connect(config.url);
 if (config.isSeed) {
   require('./utils/seed');
 }
+
+// Setup Middlewares
+require('./middlewares/appMiddleware')(app);
+
+// Routes
+app.use('/api', api);
 
 // 404 Error Handling
 app.use(function (err, req, res, next) {
