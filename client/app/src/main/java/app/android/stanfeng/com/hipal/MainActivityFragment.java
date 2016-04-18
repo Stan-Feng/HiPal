@@ -1,7 +1,10 @@
 package app.android.stanfeng.com.hipal;
 
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +39,7 @@ public class MainActivityFragment extends Fragment {
     private int[] play2 = {R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3};
     private ImageButton setting;
     private ImageButton add;
+    private OnButtonClick onButtonClick;
 
     public MainActivityFragment() {
     }
@@ -59,10 +63,13 @@ public class MainActivityFragment extends Fragment {
         tv4.setText(hp);
 
         setting = (ImageButton) v.findViewById(R.id.imageButton1);
+
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(container.getContext(), "Setting Button Clicked ", Toast.LENGTH_LONG).show();
+                Toast.makeText(container.getContext(),
+                        "Setting Button Clicked ",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -70,7 +77,9 @@ public class MainActivityFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(container.getContext(), "Add Button Clicked ", Toast.LENGTH_LONG).show();
+                if(onButtonClick != null) {
+                    onButtonClick.onClick(add);
+                }
             }
         });
 
@@ -104,8 +113,19 @@ public class MainActivityFragment extends Fragment {
         lv2 = (ListView) v.findViewById(R.id.listView2);
         lv2.setAdapter(simple2);
 
-
+        v.findViewById(R.id.imageButton2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ViewPager viewPager = (ViewPager) container.findViewById(R.id.pager);
+                viewPager.setCurrentItem(1);
+            }
+        });
 
         return v;
+
+    }
+
+    public interface OnButtonClick{
+         void onClick(View view);
     }
 }
