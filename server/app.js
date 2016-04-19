@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 
 const api = require('./apis/api');
+const auth = require('./auth/routes');
+
 const config = require('./config');
 
 // Connect to MongoDB
@@ -16,6 +18,7 @@ require('./middlewares/appMiddleware')(app);
 
 // Routes
 app.use('/api', api);
+app.use('auth', auth);
 
 // 404 Error Handling
 app.use(function (err, req, res, next) {
