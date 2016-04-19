@@ -5,9 +5,9 @@ const prodDB = 'mongodb://localhost/hipalprod';
 const config = {
   port: process.env.PORT || 3000,
   // 10 days
-  expireTime: 24 * 60 * 60 * 10,
-  secrets: {
-    jwt: process.env.JWT || 'whatever secrets'
+  secret: {
+    jwt: process.env.JWT || 'whatever secrets',
+    expireTime: 24 * 60 * 60 * 10
   }
 };
 

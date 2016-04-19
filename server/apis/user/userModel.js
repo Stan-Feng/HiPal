@@ -1,4 +1,4 @@
-const bycrypt = require('bycrypt');
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -34,7 +34,7 @@ UserSchema.methods = {
   },
 
   authenticate: function (plainTextWord) {
-    return bycrypt.compareSync(plainTextWord, this.password);
+    return bcrypt.compareSync(plainTextWord, this.password);
   },
 
   encryptPassword: function (plainTextWord) {
@@ -42,9 +42,9 @@ UserSchema.methods = {
       return '';
     }
 
-    const salt = bycrypt.getSaltSync(10);
+    const salt = bcrypt.genSaltSync(10);
 
-    return bycrypt.hashSync(plainTextWord, salt);
+    return bcrypt.hashSync(plainTextWord, salt);
   }
 };
 

@@ -44,7 +44,7 @@ module.exports = {
       } else {
         const token = signToken(user._id);
 
-        res.json(token);
+        res.json({ token });
       }
     });
   },

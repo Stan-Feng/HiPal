@@ -18,7 +18,7 @@ require('./middlewares/appMiddleware')(app);
 
 // Routes
 app.use('/api', api);
-app.use('auth', auth);
+app.use('/auth', auth);
 
 // 404 Error Handling
 app.use(function (err, req, res, next) {

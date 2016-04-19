@@ -1,6 +1,8 @@
 const Post = require('../apis/post/postModel');
 const City = require('../apis/city/cityModel');
+const User = require('../apis/user/userModel');
 
+const users = ['Anan Wang', 'Junwen Feng', 'Mengyu Wang', 'Min Cao'];
 const cities = ['Suzhou', 'Shanghai', 'Hangzhou', 'Beijing', 'Guangdong', 'Hujian'];
 const posts = [
   { text: 'I went to Suzhou to have fun.'},
@@ -22,13 +24,26 @@ const createDoc = function (Model, doc) {
 const cleanDB = function () {
   console.log('....cleaning the test DB');
 
-  const models = [Post, City];
+  const models = [Post, City, User];
   return Promise.all(models.map(model => {
     return model.remove().exec();
   }));
 };
 
 console.log('Seeding the database.');
+
+const createUser = function () {
+  const promises = users.map(username => {
+    return createDoc(User, { username: username, password: 'test123' });
+  });
+
+  return Promise.all(promises)
+    .then(users => {
+      return users;
+    }).catch(err => {
+      console.log(err);
+    });
+};
 
 const initCity = function () {
   const promises = cities.map(city => {
@@ -69,6 +84,7 @@ const addPosts = function (savedCities) {
 };
 
 cleanDB()
+  .then(createUser)
   .then(initCity)
   .then(addPosts)
   .then(console.log);
