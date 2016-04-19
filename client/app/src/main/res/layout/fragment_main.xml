@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_main"
+    >
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/firstLine"
+    android:background="#fff">
     <ImageView
         android:id="@+id/profilePhoto"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/niuniu_duanwu"
-
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true" />
 
@@ -20,6 +26,8 @@
         android:layout_toEndOf="@+id/profilePhoto"
         android:layout_marginStart="24dp"
         android:textSize="25sp"
+        android:textColor="#020202"
+        android:text="name"
         />
 
     <TextView
@@ -27,54 +35,59 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_below="@+id/imageButton1"
+        android:text="name"
+        android:layout_centerVertical="true"
         android:layout_alignStart="@+id/nickname" />
+
+</RelativeLayout>
+
 
 
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/imageButton1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/setting"
+        android:src="@drawable/edit_user"
         android:scaleType="fitXY"
-        android:background="#eee"
-        />
+        android:background="#fff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/futurePlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profilePhoto"
-        android:textSize="25dp"
+        android:layout_below="@+id/firstLine"
+        android:textSize="25sp"
         android:textColor="#6ab8ef"
+
         />
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#fff"
         android:layout_below="@+id/futurePlan">
     </ListView>
 
 
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/imageButton2"
         android:src="@drawable/add"
-        android:layout_below="@+id/listView1"
         android:scaleType="fitXY"
         android:background="#eee"
-        />
+        android:layout_above="@+id/listView1"
+        android:layout_alignParentEnd="true" />
 
 
     <TextView
         android:id="@+id/pastPlan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton2"
+        android:layout_below="@+id/listView1"
         android:textSize="25dp"
         android:textColor="#6ab8ef"
 
@@ -85,6 +98,10 @@
         android:id="@+id/listView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pastPlan">
+        android:layout_below="@+id/pastPlan"
+        android:background="#fff">
     </ListView>
+
+
+
 </RelativeLayout>

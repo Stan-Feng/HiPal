@@ -1,6 +1,7 @@
 package app.android.stanfeng.com.hipal;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class MainActivityFragment extends Fragment {
     private String nn;
     private String sn;
     private ListView lv1,lv2;
+    private ViewPager viewPager;
 
     private String[] futureTime= new String[]{"2016.10.1-2016.10.7", "2017.10.1-2017.10.7",
             "2015.10.1-2015.10.7"};
@@ -48,7 +50,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
-
+        viewPager = (ViewPager) container.findViewById(R.id.pager);
         nn = "niuniu";
         sn = "I love duanwu";
         tv1 = (TextView) v.findViewById(R.id.nickname);
@@ -116,8 +118,17 @@ public class MainActivityFragment extends Fragment {
         v.findViewById(R.id.imageButton2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ViewPager viewPager = (ViewPager) container.findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
+            }
+        });
+
+        v.findViewById(R.id.imageButton1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                       .replace(R.id.fragment_main, new SettingFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
