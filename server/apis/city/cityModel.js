@@ -6,7 +6,9 @@ const CitySchema = new Schema({
     type: String,
     required: true,
     unique: true
-  }
+  },
+
+  posts: [{ type: Schema.Types.ObjectId, ref: 'post' }]
 });
 
 module.exports = mongoose.model('city', CitySchema);
