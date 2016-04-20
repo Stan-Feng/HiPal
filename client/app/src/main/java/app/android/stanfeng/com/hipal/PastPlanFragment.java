@@ -28,9 +28,9 @@ public class PastPlanFragment extends Fragment {
     private Button cancel,jump4;
     private OnButtonClick onButtonClick;
     private String[] pastTime = new String[]{"2015.10.1-2015.10.7", "2014.10.1-2014.10.7",
-            "2013.10.1-2013.10.7","2012.10.1-2012.10.7","2011.10.1-2011.10.7"};
-    private String[] PastPlace = new String[] {"Shanghai","Beijing","Hangzhou","Chongqing","Nanjing"};
-    private int[] play2 = {R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3};
+            "2013.10.1-2013.10.7","2012.10.1-2012.10.7","2011.10.1-2011.10.7","2011.10.1-2011.10.7"};
+    private String[] PastPlace = new String[] {"Shanghai","Shanghai","Beijing","Hangzhou","Chongqing","Nanjing"};
+    private int[] play2 = {R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3};
 
     public PastPlanFragment() {
     }

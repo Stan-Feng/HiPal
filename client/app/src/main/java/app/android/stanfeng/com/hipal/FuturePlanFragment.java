@@ -28,10 +28,11 @@ public class FuturePlanFragment extends Fragment {
     private Button cancel;
     private Button add;
     private OnButtonClick onButtonClick;
-    private String[] futureTime= new String[]{"2016.10.1-2016.10.7", "2017.10.1-2017.10.7",
-            "2015.10.1-2015.10.7"};
-    private String[] futurePlace = new String[] {"Shanghai","Beijing","Hangzhou"};
-    private int[] play1 = {R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2};
+    private String[] futureTime= new String[]{"2015.10.1-2015.10.7","2016.10.1-2016.10.7",
+            "2017.10.1-2017.10.7","2018.10.1-2018.10.7","2019.10.1-2019.10.7"
+            };
+    private String[] futurePlace = new String[] {"Shanghai","Beijing","Hangzhou","Wuhan","Tianjing"};
+    private int[] play1 = {R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2};
     private ViewPager viewPager;
 
     public FuturePlanFragment() {
