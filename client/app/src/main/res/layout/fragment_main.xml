@@ -4,103 +4,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_main"
+    android:background="#eee"
     >
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/firstLine"
-    android:background="#fff">
-    <ImageView
-        android:id="@+id/profilePhoto"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/niuniu_duanwu"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
+    android:background="#eee">
 
     <TextView
-        android:id="@+id/nickname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#d0e8f9"
+        android:id="@+id/blue"
+        android:layout_marginTop="15dp"
+        android:text=" "
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/profilePhoto"
-        android:layout_marginStart="24dp"
-        android:textSize="25sp"
-        android:textColor="#020202"
-        android:text="name"
+        android:background="#d0e8f9"
+        android:id="@+id/firstLine"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+       >
+
+        <ImageView
+            android:id="@+id/profilePhoto"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/niuniu_duanwu"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/profilePhoto"
+            android:layout_marginStart="24dp"
+            android:textSize="25sp"
+            android:textColor="#202020"
+            android:text="name"
+            />
+
+        <TextView
+            android:id="@+id/signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="name"
+            android:layout_below="@+id/nickname"
+            android:layout_alignStart="@+id/nickname" />
+
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jump1"
+        android:background="#fff"
+        android:textColor="#6ab8ef"
+        android:layout_marginTop="15dp"
+        android:text="My Future Travel Plan"
+        android:layout_below="@+id/blue"
+        android:layout_centerHorizontal="true"
+         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jump2"
+        android:background="#fff"
+        android:text="My Past Travel Plan"
+        android:textColor="#6ab8ef"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/jump1"
+        android:layout_centerHorizontal="true"
         />
 
-    <TextView
-        android:id="@+id/signature"
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="name"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/nickname" />
+        android:id="@+id/jump3"
+        android:background="#fff"
+        android:textColor="#6ab8ef"
+        android:layout_marginTop="15dp"
+        android:text=" My Security"
+        android:layout_below="@+id/jump2"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile"
+        android:text="Personal Information Management"
+        android:layout_marginTop="15dp"
+        android:textColor="#fff"
+        android:background="#6ab8ef"
+        android:layout_below="@+id/jump3"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>
 
-
-
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/imageButton1"
-        android:src="@drawable/edit_user"
-        android:scaleType="fitXY"
-        android:background="#fff"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/futurePlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/firstLine"
-        android:textSize="25sp"
-        android:textColor="#6ab8ef"
-
-        />
-
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:layout_below="@+id/futurePlan">
-    </ListView>
-
-
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/imageButton2"
-        android:src="@drawable/add"
-        android:scaleType="fitXY"
-        android:background="#eee"
-        android:layout_above="@+id/listView1"
-        android:layout_alignParentEnd="true" />
-
-
-    <TextView
-        android:id="@+id/pastPlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/listView1"
-        android:textSize="25dp"
-        android:textColor="#6ab8ef"
-
-        />
-
-
-    <ListView
-        android:id="@+id/listView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pastPlan"
-        android:background="#fff">
-    </ListView>
 
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#eee"
+    android:id="@+id/fragment_past_plan"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#eee"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6ab8ef"
+            android:id="@+id/cancel"
+            android:text="Cancel"
+            android:layout_marginTop="15dp"
+            android:background="#fff"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cancel"
+            android:layout_marginTop="15dp"
+            android:background="#fff">
+        </ListView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/jump4"
+            android:text="Check My Future Travel Plan"
+            android:layout_marginTop="15dp"
+            android:textColor="#fff"
+            android:background="#6ab8ef"
+            android:layout_below="@+id/listView2"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

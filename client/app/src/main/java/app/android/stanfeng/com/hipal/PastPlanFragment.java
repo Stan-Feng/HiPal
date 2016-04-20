@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,16 +23,16 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SettingFragment extends Fragment {
-    private ListView lv3;
-    private TextView tv5;
-    private int photo = R.drawable.niuniu_duanwu;
-    private Button cancel,edit,jump4;
+public class PastPlanFragment extends Fragment {
+    private ListView lv2;
+    private Button cancel,jump4;
     private OnButtonClick onButtonClick;
-    private String[] leftContent = {"Name", "ID Number", "Signature", "Gender", "Region"};
-    private String[] rightContent = {"niuniu", "123456789", "I love duanwu", "Female", "China"};
+    private String[] pastTime = new String[]{"2015.10.1-2015.10.7", "2014.10.1-2014.10.7",
+            "2013.10.1-2013.10.7","2012.10.1-2012.10.7","2011.10.1-2011.10.7"};
+    private String[] PastPlace = new String[] {"Shanghai","Beijing","Hangzhou","Chongqing","Nanjing"};
+    private int[] play2 = {R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3};
 
-    public SettingFragment() {
+    public PastPlanFragment() {
     }
 
     @Override
@@ -46,7 +45,7 @@ public class SettingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_setting, container, false);
+        View v = inflater.inflate(R.layout.fragment_past_plan, container, false);
         cancel = (Button) v.findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,36 +54,31 @@ public class SettingFragment extends Fragment {
             }
         });
 
-
-
-        String s = "Profile Photo";
-        tv5 = (TextView) v.findViewById(R.id.nick);
-        tv5.setText(s);
-        List<Map<String, Object>> listItem3 = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < leftContent.length; i++) {
-            Map<String, Object> item = new HashMap<String, Object>();
-            item.put("left", leftContent[i]);
-            item.put("right", rightContent[i]);
-            listItem3.add(item);
+        List<Map<String, Object>> listItem2 = new ArrayList<Map<String, Object>>();
+        for (int j = 0; j < pastTime.length; j++) {
+            Map<String, Object> item2 = new HashMap<String, Object>();
+            item2.put("time", pastTime[j]);
+            item2.put("play", play2[j]);
+            item2.put("place",PastPlace[j]);
+            listItem2.add(item2);
         }
-        SimpleAdapter simple3 = new SimpleAdapter(container.getContext(), listItem3,
-                R.layout.fragment_setting_list, new String[]{"left", "right"},
-                new int[]{R.id.left, R.id.right});
-        lv3 = (ListView) v.findViewById(R.id.listView3);
-        lv3.setAdapter(simple3);
+        SimpleAdapter simple2 = new SimpleAdapter(container.getContext(), listItem2,
+                R.layout.fragment_main_simple_item, new String[] { "time","play","place"},
+                new int[] {R.id.time,R.id.play,R.id.place});
+        lv2 = (ListView) v.findViewById(R.id.listView2);
+        lv2.setAdapter(simple2);
 
+        jump4 = (Button) v.findViewById(R.id.jump4);
 
-
-        edit = (Button) v.findViewById(R.id.edit);
-        edit.setOnClickListener(new View.OnClickListener() {
+        jump4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_setting, new EditProfileFragment())
+                        .replace(R.id.fragment_past_plan, new FuturePlanFragment())
                         .addToBackStack(null)
-                        .commit();            }
+                        .commit();
+            }
         });
-
         return v;
 
 
