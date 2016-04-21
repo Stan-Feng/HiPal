@@ -74,6 +74,13 @@
         android:textColor="#6ab8ef"
         android:textSize="24sp" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:src="@drawable/refresh"
+        android:layout_gravity="right" />
+
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
