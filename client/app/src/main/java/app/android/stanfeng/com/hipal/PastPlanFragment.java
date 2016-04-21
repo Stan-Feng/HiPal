@@ -1,5 +1,4 @@
 package app.android.stanfeng.com.hipal;
-
 import android.content.Context;
 import android.os.Bundle;
 import android .support.v4.app.Fragment;
@@ -16,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
