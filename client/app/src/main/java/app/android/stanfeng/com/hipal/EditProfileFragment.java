@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 
 public class EditProfileFragment extends Fragment {
 
-    private static final String TAG = "ii";
     private Button save,cancel;
     private TextView text1,text2,text3,text4;
     private OnButtonClick onButtonClick;
@@ -31,11 +29,11 @@ public class EditProfileFragment extends Fragment {
     public EditProfileFragment() {
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -59,10 +57,9 @@ public class EditProfileFragment extends Fragment {
             public boolean onEditorAction(TextView arg0, int actionId, KeyEvent event) {
                 if (actionId==EditorInfo.IME_ACTION_DONE
                         ||(event!=null&&event.getKeyCode()== KeyEvent.KEYCODE_ENTER)) {
+                    //do something;
                     return true;
-
                 }
-
                 return false;
             }
         });
@@ -77,6 +74,7 @@ public class EditProfileFragment extends Fragment {
             public boolean onEditorAction(TextView arg0, int actionId, KeyEvent event) {
                 if (actionId==EditorInfo.IME_ACTION_DONE
                         ||(event!=null&&event.getKeyCode()== KeyEvent.KEYCODE_ENTER)) {
+                    //do something;
                     return true;
                 }
                 return false;
@@ -93,6 +91,7 @@ public class EditProfileFragment extends Fragment {
             public boolean onEditorAction(TextView arg0, int actionId, KeyEvent event) {
                 if (actionId==EditorInfo.IME_ACTION_DONE
                         ||(event!=null&&event.getKeyCode()== KeyEvent.KEYCODE_ENTER)) {
+                    //do something;
                     return true;
                 }
                 return false;
@@ -109,6 +108,7 @@ public class EditProfileFragment extends Fragment {
             public boolean onEditorAction(TextView arg0, int actionId, KeyEvent event) {
                 if (actionId==EditorInfo.IME_ACTION_DONE
                         ||(event!=null&&event.getKeyCode()== KeyEvent.KEYCODE_ENTER)) {
+                    //do something;
                     return true;
                 }
                 return false;

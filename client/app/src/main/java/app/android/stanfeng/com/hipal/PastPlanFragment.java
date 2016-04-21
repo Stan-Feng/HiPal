@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -29,6 +30,7 @@ public class PastPlanFragment extends Fragment {
             "2013.10.1-2013.10.7","2012.10.1-2012.10.7","2011.10.1-2011.10.7","2011.10.1-2011.10.7"};
     private String[] PastPlace = new String[] {"Shanghai","Shanghai","Beijing","Hangzhou","Chongqing","Nanjing"};
     private int[] play2 = {R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3,R.drawable.pencil3};
+
 
     public PastPlanFragment() {
     }
@@ -65,6 +67,13 @@ public class PastPlanFragment extends Fragment {
                 new int[] {R.id.time,R.id.play,R.id.place});
         lv2 = (ListView) v.findViewById(R.id.listView2);
         lv2.setAdapter(simple2);
+        lv2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+                viewPager.setCurrentItem(1);
+            }
+        });
 
         jump4 = (Button) v.findViewById(R.id.jump4);
 
@@ -77,6 +86,7 @@ public class PastPlanFragment extends Fragment {
                         .commit();
             }
         });
+
         return v;
 
 
