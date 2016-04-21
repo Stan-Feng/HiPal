@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/title_margin"
         android:text="place"
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="#6ab8ef"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -24,15 +24,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark" />
-
+            android:background="#d0e8f9" />
         <Spinner
             android:id="@+id/destination_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark" />
+            android:background="#d0e8f9" />
+
+
     </LinearLayout>
 
     <TextView
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/title_margin"
         android:text="date"
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="#6ab8ef"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -54,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark" />
+            android:background="#d0e8f9" />
 
         <ImageView
             android:id="@+id/search_button"
@@ -70,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/title_margin"
         android:text="label"
-        android:textColor="@android:color/holo_blue_light"
+        android:textColor="#6ab8ef"
         android:textSize="24sp" />
 
     <GridView
@@ -87,9 +88,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="confirm"/>
+            android:text="confirm"
+            android:textColor="#fff"
+            android:layout_marginBottom="15dp"
+            android:background="#6ab8ef"/>
     </LinearLayout>
 
 </LinearLayout>

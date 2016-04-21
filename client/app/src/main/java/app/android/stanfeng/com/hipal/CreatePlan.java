@@ -38,7 +38,7 @@ public class CreatePlan extends Fragment {
         // choose departure city
         departure_spinner = (Spinner) v.findViewById(R.id.departure_spinner);
         adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.city_name, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
         departure_spinner.setAdapter(adapter1);
         departure_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -55,9 +55,9 @@ public class CreatePlan extends Fragment {
         });
 
         // choose destination city
-        destination_spinner = (Spinner) v.findViewById(R.id.destination_spinner);
+       destination_spinner = (Spinner) v.findViewById(R.id.destination_spinner);
         adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.city_name, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         destination_spinner.setAdapter(adapter2);
         destination_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
