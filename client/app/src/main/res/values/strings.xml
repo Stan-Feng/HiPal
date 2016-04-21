@@ -15,7 +15,17 @@
         <item>Tianjing</item>
         <item>Xian</item>
         <item>Xiamen</item>
-        <item>Yunnan</item>
+        <item>Shanghai</item>
+        <item>HongKong</item>
+        <item>Maco</item>
+        <item>Harbin</item>
+        <item>Qingdao</item>
+        <item>Wulumuqi</item>
+        <item>Huhehaite</item>
+        <item>Sanya</item>
+        <item>Guilin</item>
+        <item>Qinghai</item>
+
     </string-array>
     <string name="title_activity_login">Sign in</string>
 
@@ -31,4 +41,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
 </resources>

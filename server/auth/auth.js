@@ -46,7 +46,7 @@ module.exports = {
     return (req, res, next) => {
       const username = req.body.username;
       const password = req.body.password;
-      console.log(username);
+      
       if (!username || !password) {
         res.status(400).send('Username and password are required.');
 
@@ -65,7 +65,6 @@ module.exports = {
           }
         })
         .catch(err => {
-          console.log(err);
           next(err);
         });
     };
