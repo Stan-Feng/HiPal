@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eee"
     android:orientation="vertical"
-    tools:context=".CreatePlan"
-    android:background="#eee">
+    tools:context=".CreatePlan">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:layout_margin="@dimen/title_margin"
         android:text="place"
         android:textColor="#6ab8ef"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="#d0e8f9" />
+
         <Spinner
             android:id="@+id/destination_spinner"
             android:layout_width="0dp"
@@ -43,7 +44,7 @@
         android:layout_margin="@dimen/title_margin"
         android:text="date"
         android:textColor="#6ab8ef"
-        android:textSize="24sp" />
+        android:textSize="28sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,59 +52,68 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/departure_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:background="#d0e8f9" />
+            android:background="#d0e8f9"
+            android:text="2016-04-21" />
 
-
+        <TextView
+            android:id="@+id/destination_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="#d0e8f9"
+            android:text="2016-05-20" />
     </LinearLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/title_margin"
-        android:text="label"
-        android:id="@+id/lala"
-        android:textColor="#6ab8ef"
-        android:textSize="24sp" />
+        android:layout_height="wrap_content">
 
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/imageButton"
-        android:background="#eee"
-        android:src="@drawable/refresh"
-        android:layout_alignTop="@+id/lala"
-        android:layout_alignParentEnd="true"
-         />
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/title_margin"
+            android:text="label"
+            android:textColor="#6ab8ef"
+            android:textSize="28sp" />
 
-</RelativeLayout>
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/label"
+            android:background="#eee"
+            android:src="@drawable/refresh" />
+    </RelativeLayout>
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:horizontalSpacing="16dp"
         android:numColumns="3"
-        android:verticalSpacing="32dp"></GridView>
+        android:verticalSpacing="48dp"></GridView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="confirm"
-            android:textColor="#fff"
             android:layout_marginBottom="15dp"
-            android:background="#6ab8ef"/>
+            android:background="#6ab8ef"
+            android:text="confirm"
+            android:textColor="#fff" />
     </LinearLayout>
 
 </LinearLayout>
