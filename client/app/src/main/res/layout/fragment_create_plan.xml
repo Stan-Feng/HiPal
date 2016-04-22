@@ -58,7 +58,8 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="#d0e8f9"
-            android:text="2016-04-21" />
+            android:textSize="20sp"
+            android:text="" />
 
         <TextView
             android:id="@+id/destination_date_text_view"
@@ -67,16 +68,18 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:background="#d0e8f9"
-            android:text="2016-05-20" />
+            android:textSize="20sp"
+            android:text="" />
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/label"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/title_margin"
             android:text="Label"
@@ -87,7 +90,7 @@
             android:id="@+id/imageButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/label"
             android:background="#eee"
             android:src="@drawable/refresh" />
@@ -97,7 +100,7 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:horizontalSpacing="16dp"
         android:numColumns="3"
