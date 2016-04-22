@@ -10,12 +10,17 @@ const LabelSchema = new Schema({
 
   color: {
     type: String,
-    required: true,
+    required: false,
     unique: true
   },
 
   correlation: {
     type: Number,
+    required: true
+  },
+
+  class: {
+    type: String,
     required: true
   }
 });

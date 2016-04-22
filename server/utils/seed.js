@@ -2,8 +2,12 @@ const Post = require('../apis/post/postModel');
 const City = require('../apis/city/cityModel');
 const User = require('../apis/user/userModel');
 
+const cities = require('./cityLabelInit').cities;
+const labels = require('./cityLabelInit').labels;
+
 const users = ['Anan Wang', 'Junwen Feng', 'Mengyu Wang', 'Min Cao'];
-const cities = ['Suzhou', 'Shanghai', 'Hangzhou', 'Beijing', 'Guangdong', 'Hujian'];
+// const cities = ['Suzhou', 'Shanghai', 'Hangzhou', 'Beijing', 'Guangdong', 'Hujian'];
+
 const posts = [
   { text: 'I went to Suzhou to have fun.'},
   { text: 'Shanghai has a bunch of delicious food.' },
@@ -47,7 +51,7 @@ const createUser = function () {
 
 const initCity = function () {
   const promises = cities.map(city => {
-    return createDoc(City, { name: city });
+    return createDoc(City, city);
   });
 
   return Promise.all(promises)

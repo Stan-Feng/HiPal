@@ -27,7 +27,14 @@ const PlanSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'city',
     required: true
-  }
+  },
+
+  isArchieved: {
+    type: Boolean,
+    required: true
+  },
+
+  labels: [{ type: Schema.Types.ObjectId, ref: 'label' }]
 
 });
 
