@@ -23,7 +23,7 @@ const createDoc = function (Model, doc) {
 const cleanDB = function () {
   console.log('....cleaning the test DB');
 
-  const models = [Post, City, User];
+  const models = [Post, City, User, Label];
   return Promise.all(models.map(model => {
     return model.remove().exec();
   }));
@@ -58,15 +58,29 @@ const initCity = function () {
 };
 
 const initLabels = function () {
-  const promises = Object.keys(labels).map(key => {
-    return labels[key].map(label => {
-      return createDoc(Label, label);
+  function concatAll (arr) {
+    const cacheArr = [];
+
+    arr.forEach(subArr => {
+      subArr.forEach(el => {
+        cacheArr.push(el);
+      });
     });
+
+    return cacheArr;
+  }
+  var l = Object.keys(labels)
+    .map(key => (labels[key]));
+  l = concatAll(l);
+  console.log(l);
+  const promises = l.map(el => {
+    return createDoc(Label, el);
   });
 
   return Promise.all(promises)
     .then(labels => {
       savedLabels = labels;
+      console.log(savedLabels);
       return labels;
     });
 };
@@ -96,4 +110,7 @@ cleanDB()
   .then(initCity)
   .then(initLabels)
   .then(addPosts)
-  .then(console.log);
+  .then(console.log)
+  .catch(err => {
+    console.log(err);
+  });
