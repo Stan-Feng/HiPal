@@ -4,18 +4,16 @@ const Schema = mongoose.Schema;
 const LabelSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
-  },
-
-  color: {
-    type: String,
-    required: true,
-    unique: true
+    required: true
   },
 
   correlation: {
     type: Number,
+    required: true
+  },
+
+  class: {
+    type: String,
     required: true
   }
 });
