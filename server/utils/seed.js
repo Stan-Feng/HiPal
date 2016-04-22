@@ -1,21 +1,16 @@
 const Post = require('../apis/post/postModel');
 const City = require('../apis/city/cityModel');
 const User = require('../apis/user/userModel');
+const Label = require('../apis/label/labelModel');
 
-const cities = require('./cityLabelInit').cities;
-const labels = require('./cityLabelInit').labels;
+const users = require('./fakeData').users;
+const posts = require('./fakeData').posts;
+const cities = require('./fakeData').cities;
+const labels = require('./fakeData').labels;
 
-const users = ['Anan Wang', 'Junwen Feng', 'Mengyu Wang', 'Min Cao'];
-// const cities = ['Suzhou', 'Shanghai', 'Hangzhou', 'Beijing', 'Guangdong', 'Hujian'];
-
-const posts = [
-  { text: 'I went to Suzhou to have fun.'},
-  { text: 'Shanghai has a bunch of delicious food.' },
-  { text: 'Hangzhou Tea!!!!!!!!!.' },
-  { text: 'Beijing Duck is aswesome.' },
-  { text: 'Guangdong is very hot.' },
-  { text: 'There\'s an island in Hujian called Gulang Yu.' }
-];
+var savedUsers;
+var savedCities;
+var savedLabels;
 
 const createDoc = function (Model, doc) {
   return new Promise((resolve, reject) => {
@@ -37,12 +32,13 @@ const cleanDB = function () {
 console.log('Seeding the database.');
 
 const createUser = function () {
-  const promises = users.map(username => {
-    return createDoc(User, { username: username, password: 'test123' });
+  const promises = users.map(user => {
+    return createDoc(User, user);
   });
 
   return Promise.all(promises)
     .then(users => {
+      savedUsers = users;
       return users;
     }).catch(err => {
       console.log(err);
@@ -56,32 +52,40 @@ const initCity = function () {
 
   return Promise.all(promises)
     .then(cities => {
+      savedCities = cities;
       return cities;
     });
 };
 
-const addPosts = function (savedCities) {
-  const addCity = (post, city) => {
-    post.city = city;
-
-    return new Promise((resolve, reject) => {
-      post.save((err, saved) => {
-        return err ? reject(err) : resolve(saved);
-      });
+const initLabels = function () {
+  const promises = Object.keys(labels).map(key => {
+    return labels[key].map(label => {
+      return createDoc(Label, label);
     });
-  };
+  });
 
+  return Promise.all(promises)
+    .then(labels => {
+      savedLabels = labels;
+      return labels;
+    });
+};
+
+const addPosts = function () {
   const newPosts = posts.map((post, i) => {
     post.city = savedCities[i]._id;
-    console.log(post);
+    post.user = savedUsers[i >= 3 ? 0 : i];
+
     return createDoc(Post, post);
   });
 
   return Promise.all(newPosts)
-    .then(savedPosts => {
-      return savedPosts;
-    })
-    .then(function () {
+    .then(savedPosts => savedPosts)
+    .then(function (savedPosts) {
+      console.log(savedUsers);
+      console.log(savedLabels);
+      console.log(savedCities);
+      console.log(savedPosts);
       return 'Seed DB Done...';
     });
 
@@ -90,5 +94,6 @@ const addPosts = function (savedCities) {
 cleanDB()
   .then(createUser)
   .then(initCity)
+  .then(initLabels)
   .then(addPosts)
   .then(console.log);
