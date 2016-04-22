@@ -1,5 +1,6 @@
 package app.android.stanfeng.com.hipal;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ import java.util.Map;
 public class CreatePlan extends Fragment {
 
     private GridView gridview_label;
-    private String[] lable = new String[]{"Happy","Happy","Happy","Happy","Happy","Happy"};
+    private String[] lable = new String[]{"taste","movie","sport","music","sleep","idol"};
     private int[] label_image = {R.drawable.label,R.drawable.label,
             R.drawable.label,R.drawable.label,R.drawable.label,R.drawable.label};
     private Spinner departure_spinner;
@@ -38,7 +39,7 @@ public class CreatePlan extends Fragment {
         // choose departure city
         departure_spinner = (Spinner) v.findViewById(R.id.departure_spinner);
         adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.city_name, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_item);
         departure_spinner.setAdapter(adapter1);
         departure_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -55,9 +56,9 @@ public class CreatePlan extends Fragment {
         });
 
         // choose destination city
-        destination_spinner = (Spinner) v.findViewById(R.id.destination_spinner);
+       destination_spinner = (Spinner) v.findViewById(R.id.destination_spinner);
         adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.city_name, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         destination_spinner.setAdapter(adapter2);
         destination_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -84,11 +85,28 @@ public class CreatePlan extends Fragment {
             gridView.add(item);
         }
 
+        final ArrayList<View> selectedViews = new ArrayList<>();
+
         SimpleAdapter simple = new SimpleAdapter(container.getContext(), gridView,
                 R.layout.fragment_create_plan_gridview_item, new String[] { "label_text","label_image"},
-                new int[] {R.id.label_text,R.id.label_image});
+                new int[] {R.id.label_title,R.id.label_image});
         gridview_label = (GridView) v.findViewById(R.id.gridView);
         gridview_label.setAdapter(simple);
+        gridview_label.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (selectedViews.indexOf(view) >= 0) {
+                    view.setBackgroundColor(Color.parseColor("#EEEEEE"));
+                    selectedViews.remove(selectedViews.indexOf(view));
+                } else if (selectedViews.size() >= 5) {
+                    Toast.makeText(getActivity(), "You can only selected 5 labels!", Toast.LENGTH_SHORT).show();
+                } else {
+                    view.setBackgroundColor(Color.parseColor("#68bee6"));
+                        selectedViews.add(view);
+                }
+            }
+        });
 
 
         return v;
