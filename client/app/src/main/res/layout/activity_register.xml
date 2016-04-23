@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg3"
+    tools:context="app.android.stanfeng.com.hipal.RegisterActivity">
+
+
+    <ImageView
+        android:id="@+id/account2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="40dp"
+        android:maxWidth="40dp"
+        android:src="@drawable/user1"
+        android:layout_marginTop="178dp"/>
+
+
+    <EditText
+        android:id="@+id/ed3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Account"
+        android:focusable="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/account2"
+        android:layout_marginTop="175dp"/>
+
+    <ImageView
+        android:id="@+id/nickname1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="40dp"
+        android:maxWidth="40dp"
+        android:src="@drawable/user1"
+        android:layout_marginTop="222dp"/>
+
+
+    <EditText
+        android:id="@+id/ed4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Nickname"
+        android:focusable="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/account2"
+        android:layout_marginTop="219dp"/>
+
+    <ImageView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="68dp"
+        android:maxWidth="68dp"
+        android:src="@drawable/gender"
+        android:layout_marginTop="270dp"
+        android:layout_alignEnd="@+id/account2" />
+
+
+    <EditText
+        android:id="@+id/ed5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your gender"
+        android:focusable="true"
+        android:layout_toEndOf="@id/nickname1"
+        android:layout_marginTop="263dp"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="68dp"
+        android:maxWidth="68dp"
+        android:src="@drawable/age"
+        android:layout_marginTop="310dp"
+        android:layout_alignEnd="@+id/account2" />
+
+
+    <EditText
+        android:id="@+id/ed6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="2"
+        android:hint="Enter your age"
+        android:focusable="true"
+        android:layout_toEndOf="@id/nickname1"
+        android:layout_marginTop="307dp"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="68dp"
+        android:maxWidth="68dp"
+        android:src="@drawable/age"
+        android:layout_marginTop="354dp"
+        android:layout_alignEnd="@+id/account2" />
+
+
+    <EditText
+        android:id="@+id/ed7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your city"
+        android:focusable="true"
+        android:layout_toEndOf="@id/nickname1"
+        android:layout_marginTop="351dp"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/signture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="68dp"
+        android:maxWidth="68dp"
+        android:src="@drawable/age"
+        android:layout_marginTop="398dp"
+        android:layout_alignEnd="@+id/account2" />
+
+
+    <EditText
+        android:id="@+id/ed8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter your signture"
+        android:focusable="true"
+        android:layout_toEndOf="@id/nickname1"
+        android:layout_marginTop="395dp"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/pd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="68dp"
+        android:maxWidth="68dp"
+        android:src="@drawable/password1"
+        android:layout_marginTop="442dp"
+        android:layout_alignEnd="@+id/account2" />
+
+
+    <EditText
+        android:id="@+id/ed9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Enter your password"
+        android:focusable="true"
+        android:layout_toEndOf="@id/nickname1"
+        android:layout_marginTop="439dp"
+        android:layout_alignParentEnd="true"/>
+
+
+    <Button
+        android:id="@+id/signup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="          Sign Up          "
+        android:background="@color/colorButton"
+        android:layout_below="@+id/ed9"
+        android:layout_alignStart="@+id/ed9"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp" />
+
+
+
+</RelativeLayout>

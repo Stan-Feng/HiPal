@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context="app.android.stanfeng.com.hipal.LoginActivity">
+
+
+    <ImageView
+        android:id="@+id/account1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="40dp"
+        android:maxWidth="40dp"
+        android:src="@drawable/user1"
+        android:layout_marginTop="300dp"/>
+
+
+    <EditText
+        android:id="@+id/ed1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Account"
+        android:focusable="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/account1"
+        android:layout_marginTop="297dp"/>
+
+    <ImageView
+        android:id="@+id/pw1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="68dp"
+        android:maxWidth="68dp"
+        android:src="@drawable/password1"
+        android:layout_marginTop="350dp"
+        android:layout_alignEnd="@+id/account1" />
+
+
+    <EditText
+        android:id="@+id/ed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Password"
+        android:focusable="true"
+        android:layout_toEndOf="@id/pw1"
+        android:layout_marginTop="347dp"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:id="@+id/login1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="          Log In          "
+        android:layout_below="@+id/ed2"
+        android:layout_alignStart="@+id/ed2"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="55dp"
+        android:background="@color/colorButton"/>
+
+
+</RelativeLayout>
