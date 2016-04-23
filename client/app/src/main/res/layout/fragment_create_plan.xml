@@ -1,121 +1,171 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eee"
     android:orientation="vertical"
-    tools:context=".CreatePlan">
+    tools:context=".CreatePlan"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_marginTop="15dp"
+    android:id="@+id/createLine"
+    android:background="@color/colorButtonBackground1">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="place"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="24sp" />
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:text="   Departure"
+        android:id="@+id/departure"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#3aa8f5"
+        android:textSize="20dp"
+        android:background="@color/colorW"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/departure"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark" />
-
-        <TextView
-            android:id="@+id/destination"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark" />
-    </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
+    android:layout_width="250dp"
+    android:layout_height="30dp"
+    android:text="   Destination"
+    android:id="@+id/destination"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorW"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        android:textColor="#3aa8f5"
+        android:layout_below="@+id/departure"
+        />
+    <Spinner
+        android:id="@+id/departure_spinner"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="data"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="24sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:background="@color/colorButtonBackground2"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/departure"
+        android:layout_above="@+id/destination" />
+    <Spinner
+        android:id="@+id/destination_spinner"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorButtonBackground2"
+        android:layout_marginRight="15dp"
+        android:layout_alignTop="@+id/destination"
+        android:layout_alignBottom="@+id/destination" />
 
-        <TextView
-            android:id="@+id/data"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark" />
-
-        <ImageView
-            android:id="@+id/search_button"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            android:src="@drawable/search_button" />
-    </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:text="   Date"
+        android:id="@+id/date"
+        android:textColor="#3aa8f5"
+        android:textSize="20dp"
+        android:background="@color/colorW"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/destination"
+         />
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="—"
+        android:id="@+id/lineline"
+        android:textColor="@color/colorButtonText"
+        android:layout_alignTop="@+id/date"
+        android:layout_toEndOf="@+id/destination"
+        android:layout_toRightOf="@+id/destination"
+        />
+    <TextView
+        android:id="@+id/departure_date_text_view"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="label"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="24sp" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorButtonBackground2"
+        android:layout_marginRight="135dp"
+        android:layout_alignTop="@+id/date"
+        android:layout_alignBottom="@+id/date" />
+    <TextView
+        android:id="@+id/destination_date_text_view"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorButtonBackground2"
+        android:layout_marginRight="15dp"
+        android:layout_alignTop="@+id/date"
+        android:layout_alignBottom="@+id/date" />
+
+</RelativeLayout>
+
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/line2"
+    android:layout_below="@+id/createLine">
+
+    <TextView
+        android:layout_width="360dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:text="                      Label Selection"
+        android:layout_marginTop="15dp"
+        android:id="@+id/label"
+        android:background="@color/colorW"
+        android:layout_marginRight="15dp"
+        android:textColor="#3aa8f5"
+        android:textSize="20dp" />
+
+
+
+</RelativeLayout>
+
+
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:horizontalSpacing="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:horizontalSpacing="16dp"
+        android:layout_below="@+id/line2"
+        android:background="#fff"
         android:numColumns="3"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="8dp"></GridView>
+        android:verticalSpacing="48dp"></GridView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:layout_margin="16dp"
-        android:text="user"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="24sp" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:textColor="@color/colorButtonText"
+        android:layout_below="@+id/gridView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="30dp"
+        android:background="#fff"
+        android:layout_marginLeft="35dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:orientation="horizontal">
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:textColor="#fff"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/gridView"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="30dp"
+            android:background="#6ab8ef"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:layout_gravity="left"
-            android:src="@drawable/user" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:layout_gravity="left"
-            android:src="@drawable/user" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:layout_gravity="left"
-            android:src="@drawable/user" />
-
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

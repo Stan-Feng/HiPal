@@ -2,6 +2,7 @@ package app.android.stanfeng.com.hipal;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -48,8 +50,12 @@ public class ShareFragment extends Fragment {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+//                TextView tv = (TextView) view;
+//                tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
+//                tv.setTextSize(20.0f);    //设置大小
+//                tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
                 Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
+                Log.w("Share wrong selected: ", parent.getItemAtPosition(position) + "selected");
             }
 
             @Override

@@ -16,9 +16,9 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText ed1 = (EditText) findViewById(R.id.ed1);
         final EditText ed2 = (EditText) findViewById(R.id.ed2);
-        final Button login = (Button) findViewById(R.id.login);
+        final Button login1 = (Button) findViewById(R.id.login1);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        login1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);

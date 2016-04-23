@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#fff">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" "
+        android:id="@+id/textView2"
+         />
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:adjustViewBounds="true"
+        android:layout_marginLeft="10dp"
         android:maxHeight="60dp"
         android:maxWidth="60dp"
         android:src="@drawable/share1"/>
@@ -17,18 +25,29 @@
         android:id="@+id/ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/avatar"
-        android:textSize="22dp" />
+        android:text="11111"
+        android:textColor="#202020"
+        android:layout_marginLeft="15dp"
+        android:textSize="22dp"
+        android:layout_below="@+id/textView2"
+        android:layout_toEndOf="@+id/avatar" />
 
     <TextView
         android:id="@+id/comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="1111"
+        android:layout_marginLeft="15dp"
+        android:textSize="18dp"
         android:layout_below="@+id/ID"
-        android:layout_alignLeft="@+id/ID"
-        android:textSize="18dp"/>
+        android:layout_toEndOf="@+id/avatar"
+        />
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/images">
 
+  </RelativeLayout>
     <ImageView
         android:id="@+id/images1"
         android:layout_width="wrap_content"
@@ -73,6 +92,14 @@
         android:maxWidth="100dp"
         android:src="@drawable/image1"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" "
+        android:id="@+id/textView3"
+        android:layout_below="@+id/images4"
+        />
 
 
 </RelativeLayout>

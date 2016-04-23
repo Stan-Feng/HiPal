@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:hint="Enter your Account"
         android:focusable="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/account2"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/account2"
         android:layout_marginTop="175dp"/>
 
     <ImageView
@@ -45,8 +45,8 @@
         android:layout_height="wrap_content"
         android:hint="Enter your Nickname"
         android:focusable="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/account2"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/account2"
         android:layout_marginTop="219dp"/>
 
     <ImageView
@@ -58,7 +58,7 @@
         android:maxWidth="68dp"
         android:src="@drawable/gender"
         android:layout_marginTop="270dp"
-        android:layout_alignEnd="@+id/account2" />
+        android:layout_alignRight="@+id/account2" />
 
 
     <EditText
@@ -67,9 +67,9 @@
         android:layout_height="wrap_content"
         android:hint="Enter your gender"
         android:focusable="true"
-        android:layout_toEndOf="@id/nickname1"
+        android:layout_toRightOf="@id/nickname1"
         android:layout_marginTop="263dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentRight="true"/>
 
     <ImageView
         android:id="@+id/age"
@@ -80,7 +80,7 @@
         android:maxWidth="68dp"
         android:src="@drawable/age"
         android:layout_marginTop="310dp"
-        android:layout_alignEnd="@+id/account2" />
+        android:layout_alignRight="@+id/account2" />
 
 
     <EditText
@@ -91,9 +91,9 @@
         android:ems="2"
         android:hint="Enter your age"
         android:focusable="true"
-        android:layout_toEndOf="@id/nickname1"
+        android:layout_toRightOf="@id/nickname1"
         android:layout_marginTop="307dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentRight="true"/>
 
     <ImageView
         android:id="@+id/city"
@@ -104,7 +104,7 @@
         android:maxWidth="68dp"
         android:src="@drawable/age"
         android:layout_marginTop="354dp"
-        android:layout_alignEnd="@+id/account2" />
+        android:layout_alignRight="@+id/account2" />
 
 
     <EditText
@@ -113,9 +113,9 @@
         android:layout_height="wrap_content"
         android:hint="Enter your city"
         android:focusable="true"
-        android:layout_toEndOf="@id/nickname1"
+        android:layout_toRightOf="@id/nickname1"
         android:layout_marginTop="351dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentRight="true"/>
 
     <ImageView
         android:id="@+id/signture"
@@ -126,7 +126,7 @@
         android:maxWidth="68dp"
         android:src="@drawable/age"
         android:layout_marginTop="398dp"
-        android:layout_alignEnd="@+id/account2" />
+        android:layout_alignRight="@+id/account2" />
 
 
     <EditText
@@ -135,9 +135,9 @@
         android:layout_height="wrap_content"
         android:hint="Enter your signture"
         android:focusable="true"
-        android:layout_toEndOf="@id/nickname1"
+        android:layout_toRightOf="@id/nickname1"
         android:layout_marginTop="395dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentRight="true"/>
 
     <ImageView
         android:id="@+id/pd2"
@@ -148,7 +148,7 @@
         android:maxWidth="68dp"
         android:src="@drawable/password1"
         android:layout_marginTop="442dp"
-        android:layout_alignEnd="@+id/account2" />
+        android:layout_alignRight="@+id/account2" />
 
 
     <EditText
@@ -159,9 +159,9 @@
         android:ems="10"
         android:hint="Enter your password"
         android:focusable="true"
-        android:layout_toEndOf="@id/nickname1"
+        android:layout_toRightOf="@id/nickname1"
         android:layout_marginTop="439dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentRight="true"/>
 
 
     <Button
@@ -169,10 +169,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="          Sign Up          "
-        android:background="@color/colorButton"
+        android:background="@color/colorButtonText"
         android:layout_below="@+id/ed9"
-        android:layout_alignStart="@+id/ed9"
-        android:layout_marginStart="40dp"
+        android:layout_alignLeft="@+id/ed9"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp" />
 
 

@@ -1,16 +1,22 @@
 const Post = require('./postModel');
+const City = require('../city/cityModel');
 
 module.exports = {
 
-  params (req, res, next, id) {
-    Post.findById(id)
-      .then(post => {
-        if (!post) {
-          next(new Error('Invalid Post Id.'));
-        } else {
-          req.post = post;
-          next();
-        }
+  params (req, res, next, cityName) {
+    City.findOne({ name: cityName })
+      .then(city => {
+        Post.find({ city: city._id })
+          .then(posts => {
+            if (!posts) {
+              next(new Error('Invalid City Name'));
+            } else {
+              req.posts = posts;
+              next();
+            }
+          }).catch(err => {
+            next(err);
+          });
       })
       .catch(err => {
         next(err);
@@ -41,8 +47,7 @@ module.exports = {
       });
   },
 
-  getOne (req, res, next) {
-    var post = req.body;
-    res.json(req.body);
+  getSameCityPosts (req, res, next) {
+    res.json({ posts: req.posts });
   }
 };

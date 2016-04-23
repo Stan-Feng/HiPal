@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:hint="Account"
         android:focusable="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/account1"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/account1"
         android:layout_marginTop="297dp"/>
 
     <ImageView
@@ -37,7 +37,7 @@
         android:maxWidth="68dp"
         android:src="@drawable/password1"
         android:layout_marginTop="350dp"
-        android:layout_alignEnd="@+id/account1" />
+        android:layout_alignRight="@+id/account1" />
 
 
     <EditText
@@ -48,9 +48,9 @@
         android:ems="10"
         android:hint="Password"
         android:focusable="true"
-        android:layout_toEndOf="@id/pw1"
+        android:layout_toRightOf="@id/pw1"
         android:layout_marginTop="347dp"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentRight="true"/>
 
     <Button
         android:id="@+id/login1"
@@ -58,10 +58,10 @@
         android:layout_height="wrap_content"
         android:text="          Log In          "
         android:layout_below="@+id/ed2"
-        android:layout_alignStart="@+id/ed2"
-        android:layout_marginStart="40dp"
+        android:layout_alignLeft="@+id/ed2"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="55dp"
-        android:background="@color/colorButton"/>
+        android:background="@color/colorButtonText"/>
 
 
 </RelativeLayout>

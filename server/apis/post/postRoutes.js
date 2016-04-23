@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const controller = require('./postController');
 
-router.param('id', controller.params);
+router.param('cityName', controller.params);
 
 router.route('/')
   .get(controller.get)
   .post(controller.post);
 
-router.route('/:id')
-  .get(controller.getOne);
+router.route('/:cityName')
+  .get(controller.getSameCityPosts);
 
 module.exports = router;
