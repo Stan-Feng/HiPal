@@ -51,7 +51,7 @@ public class FuturePlanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_future_plan, container, false);
-        viewPager = (ViewPager) container.findViewById(R.id.pager);
+        viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
 
         cancel = (Button) v.findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +79,7 @@ public class FuturePlanFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }
         });
