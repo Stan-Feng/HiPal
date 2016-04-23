@@ -1,13 +1,17 @@
 package app.android.stanfeng.com.hipal;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -16,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,19 +28,34 @@ import java.util.Map;
 
 public class CreatePlan extends Fragment {
 
+    // show label
     private GridView gridview_label;
+
     private String[] lable = new String[]{"taste","movie","sport","music","sleep","idol"};
     private int[] label_image = {R.drawable.minions1,R.drawable.minions2,
             R.drawable.minions3,R.drawable.minions4,R.drawable.minions5,R.drawable.minions6};
     private Spinner departure_spinner;
     private Spinner destination_spinner;
+
     private ArrayAdapter<CharSequence> adapter1;
     private ArrayAdapter<CharSequence> adapter2;
 
-    public CreatePlan() {}
+    // choose date by dialog
+    private int Year;
+    private int Month;
+    private int Day;
+    private DatePickerDialog departure_date_dialog;
+    private DatePickerDialog destination_date_dialog;
+    private TextView departure_date_text_view;
+    private TextView destination_date_text_view;
+
+
+    public CreatePlan() {
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create_plan, container, false);
+
         String tx4 = "----";
         TextView text = (TextView) v.findViewById(R.id.lineline);
         text.setText(tx4);
@@ -70,7 +90,7 @@ public class CreatePlan extends Fragment {
        destination_spinner = (Spinner) v.findViewById(R.id.destination_spinner);
         adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.city_name,
                 android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+       adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         destination_spinner.setAdapter(adapter2);
         destination_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -93,8 +113,7 @@ public class CreatePlan extends Fragment {
         });
 
 
-
-        //  show the label by grid view
+        //  TODO: show the label by gridView
         List<Map<String, Object>> gridView = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < lable.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
@@ -106,8 +125,8 @@ public class CreatePlan extends Fragment {
         final ArrayList<View> selectedViews = new ArrayList<>();
 
         SimpleAdapter simple = new SimpleAdapter(container.getContext(), gridView,
-                R.layout.fragment_create_plan_gridview_item, new String[] { "label_text","label_image"},
-                new int[] {R.id.label_title,R.id.label_image});
+                R.layout.fragment_create_plan_gridview_item, new String[]{"label_text", "label_image"},
+                new int[]{R.id.label_title, R.id.label_image});
         gridview_label = (GridView) v.findViewById(R.id.gridView);
         gridview_label.setAdapter(simple);
         gridview_label.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -122,12 +141,82 @@ public class CreatePlan extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 } else {
                     view.setBackgroundColor(Color.parseColor("#68bee6"));
-                        selectedViews.add(view);
+                    selectedViews.add(view);
                 }
             }
         });
 
 
+        // TODO: user choose the date for the departure and destination by two separate dialogs
+
+        //  get the current date
+        final Calendar cal = Calendar.getInstance();
+        Year = cal.get(Calendar.YEAR);
+        Month = cal.get(Calendar.MONTH) + 1;
+        Day = cal.get(Calendar.DAY_OF_MONTH);
+        Log.v("Year", "this is year");
+
+
+        // init the date for departure
+        departure_date_text_view = (TextView) v.findViewById(R.id.departure_date_text_view);
+        departure_date_text_view.setText(Month + " - " + Day + " - " + Year);
+        departure_date_text_view.setTextColor(getResources().getColor(R.color.colorW));
+        departure_date_text_view.setTextSize(13.0f);    //设置大小
+
+        //  init the DatePickerDialog
+        DatePickerDialog.OnDateSetListener dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                monthOfYear++;
+                departure_date_text_view.setText(monthOfYear + " - " + dayOfMonth + " - " + year);
+
+
+
+            }
+        };
+        departure_date_dialog = new DatePickerDialog(getContext(), dateSetListener1, Year, Month, Day);
+
+
+        //  set the clickListener to show the datePickerDialog
+        departure_date_text_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                departure_date_dialog.show();
+            }
+        });
+
+
+
+        //  init the date  for destination
+        destination_date_text_view = (TextView) v.findViewById(R.id.destination_date_text_view);
+        destination_date_text_view.setText(Month + " - " + Day + " - " + Year);
+        destination_date_text_view.setTextColor(getResources().getColor(R.color.colorW));
+        destination_date_text_view.setTextSize(13.0f);    //设置大小
+
+
+
+        //  init the DatePickerDialog
+        DatePickerDialog.OnDateSetListener dateSetListener2 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                monthOfYear++;
+                destination_date_text_view.setText(monthOfYear + " - " + dayOfMonth + " - " + year);
+
+
+            }
+        };
+        destination_date_dialog = new DatePickerDialog(getContext(), dateSetListener2, Year, Month, Day);
+
+
+        // set the clickListener to show the datePickerDialog
+        destination_date_text_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                destination_date_dialog.show();
+            }
+        });
         return v;
     }
 

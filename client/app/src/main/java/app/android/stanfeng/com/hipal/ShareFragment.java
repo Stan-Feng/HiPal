@@ -54,7 +54,7 @@ public class ShareFragment extends Fragment {
 //                tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
 //                tv.setTextSize(20.0f);    //设置大小
 //                tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
-//                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
                 Log.w("Share wrong selected: ", parent.getItemAtPosition(position) + "selected");
             }
 

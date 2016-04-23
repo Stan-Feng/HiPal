@@ -12,7 +12,37 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+
+  nickname: {
+    type: String,
+    unique: true,
+    required: true
+  },
+
+  signature: {
+    type: String,
+    required: true
+  },
+
+  gender: {
+    type: String,
+    required: true
+  },
+
+  city: {
+    type: String,
+    required: true
+  },
+
+  age: {
+    type: Number,
+    required: true
+  },
+
+  plans: [{ type: Schema.Types.ObjectId, ref: 'plan' }],
+
+  posts: [{ type: Schema.Types.ObjectId, ref: 'post' }]
 });
 
 UserSchema.pre('save', function (next) {

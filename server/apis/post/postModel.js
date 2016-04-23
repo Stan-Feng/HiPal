@@ -16,6 +16,12 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'city',
     required: true
+  },
+
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+    required: true
   }
 });
 
