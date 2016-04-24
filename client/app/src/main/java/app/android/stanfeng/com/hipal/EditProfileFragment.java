@@ -47,7 +47,7 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        String tx1 = "Nickname";
+        String tx1 = "  Nickname";
         text1 = (TextView) v.findViewById(R.id.nick2);
         text1.setText(tx1);
         tip1 = (EditText) v.findViewById(R.id.tip1);
@@ -64,7 +64,7 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        String tx2 = "Signature";
+        String tx2 = "  Signature";
         text2 = (TextView) v.findViewById(R.id.signature2);
         text2.setText(tx2);
         tip2 = (EditText) v.findViewById(R.id.tip2);
@@ -81,7 +81,7 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        String tx3 = "Region";
+        String tx3 = "  Region";
         text3 = (TextView) v.findViewById(R.id.region);
         text3.setText(tx3);
         tip3 = (EditText) v.findViewById(R.id.tip3);
@@ -98,7 +98,7 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        String tx4 = "Gender";
+        String tx4 = "  Gender";
         text4 = (TextView) v.findViewById(R.id.gender);
         text4.setText(tx4);
         tip4 = (EditText) v.findViewById(R.id.tip4);

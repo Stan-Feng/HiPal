@@ -34,7 +34,8 @@ public class FuturePlanFragment extends Fragment {
             "2017.10.1-2017.10.7","2018.10.1-2018.10.7","2019.10.1-2019.10.7"
             };
     private String[] futurePlace = new String[] {"Shanghai","Beijing","Hangzhou","Wuhan","Tianjing"};
-    private int[] play1 = {R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2};
+    private int[] play1 = {R.drawable.minions1,R.drawable.minions2,R.drawable.minions3,
+            R.drawable.minions4,R.drawable.minions5};
     private ViewPager viewPager;
 
     public FuturePlanFragment() {

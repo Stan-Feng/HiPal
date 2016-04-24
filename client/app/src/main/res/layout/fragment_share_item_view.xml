@@ -101,5 +101,13 @@
         android:layout_below="@+id/images4"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:text=" "
+        android:id="@+id/textView4"
+        android:background="#eee"
+        android:layout_below="@+id/textView3"
+        />
 
 </RelativeLayout>

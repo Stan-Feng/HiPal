@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorW"
+
+    >
 
     <ImageView
         android:id="@+id/label_image"
@@ -16,8 +19,11 @@
         android:id="@+id/label_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/label_image"
-        android:textSize="24sp"
-        android:textColor="#202020"
-        android:text="Sport"/>
+        android:textSize="15sp"
+        android:textColor="@color/colorB"
+        android:text="Sport"
+        android:layout_alignTop="@+id/label_image"
+        android:layout_toRightOf="@+id/label_image"
+        android:layout_marginRight="5dp"
+        android:layout_toEndOf="@+id/label_image" />
 </RelativeLayout>

@@ -6,166 +6,180 @@
     android:orientation="vertical"
     tools:context=".CreatePlan"
     >
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:layout_marginTop="15dp"
-    android:id="@+id/createLine"
-    android:background="@color/colorButtonBackground1">
 
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="30dp"
-        android:text="   Departure"
-        android:id="@+id/departure"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:textColor="#3aa8f5"
-        android:textSize="20dp"
-        android:background="@color/colorW"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/createLine"
+            android:background="@color/background">
 
-
-    <TextView
-    android:layout_width="250dp"
-    android:layout_height="30dp"
-    android:text="   Destination"
-    android:id="@+id/destination"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorW"
-        android:layout_marginLeft="15dp"
-        android:textSize="20dp"
-        android:textColor="#3aa8f5"
-        android:layout_below="@+id/departure"
-        />
-    <Spinner
-        android:id="@+id/departure_spinner"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorButtonBackground2"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/departure"
-        android:layout_above="@+id/destination" />
-    <Spinner
-        android:id="@+id/destination_spinner"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/colorButtonBackground2"
-        android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/destination"
-        android:layout_alignBottom="@+id/destination" />
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="30dp"
+                android:text="   Departure"
+                android:id="@+id/departure"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorButtonText"
+                android:textSize="20dp"
+                android:background="@color/colorW"/>
 
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:text="   Date"
-        android:id="@+id/date"
-        android:textColor="#3aa8f5"
-        android:textSize="20dp"
-        android:background="@color/colorW"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/destination"
-         />
-    <TextView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:text="—"
-        android:id="@+id/lineline"
-        android:textColor="@color/colorButtonText"
-        android:layout_alignTop="@+id/date"
-        android:layout_toEndOf="@+id/destination"
-        android:layout_toRightOf="@+id/destination"
-        />
-    <TextView
-        android:id="@+id/departure_date_text_view"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/colorButtonBackground2"
-        android:layout_marginRight="135dp"
-        android:layout_alignTop="@+id/date"
-        android:layout_alignBottom="@+id/date" />
-    <TextView
-        android:id="@+id/destination_date_text_view"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/colorButtonBackground2"
-        android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/date"
-        android:layout_alignBottom="@+id/date" />
-
-</RelativeLayout>
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="30dp"
+                android:text="   Destination"
+                android:id="@+id/destination"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorW"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"
+                android:textColor="@color/colorButtonText"
+                android:layout_below="@+id/departure"
+                />
+            <Spinner
+                android:id="@+id/departure_spinner"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorButtonBackground1"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/departure"
+                android:layout_above="@+id/destination" />
+            <Spinner
+                android:id="@+id/destination_spinner"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorButtonBackground1"
+                android:layout_marginRight="15dp"
+                android:layout_alignTop="@+id/destination"
+                android:layout_alignBottom="@+id/destination" />
 
 
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="30dp"
+                android:text="   Date"
+                android:id="@+id/date"
+                android:textColor="@color/colorButtonText"
+                android:textSize="20dp"
+                android:background="@color/colorW"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/destination"
+                />
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="—"
+                android:id="@+id/lineline"
+                android:textColor="@color/colorButtonText"
+                android:layout_alignTop="@+id/date"
+                android:layout_toEndOf="@+id/destination"
+                android:layout_toRightOf="@+id/destination"
+                />
+            <TextView
+                android:id="@+id/departure_date_text_view"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorButtonBackground1"
+                android:layout_marginRight="110dp"
+                android:layout_alignTop="@+id/date"
+                android:layout_alignBottom="@+id/date" />
+            <TextView
+                android:id="@+id/destination_date_text_view"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorButtonBackground1"
+                android:layout_marginRight="15dp"
+                android:layout_alignTop="@+id/date"
+                android:layout_alignBottom="@+id/date" />
 
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/line2"
-    android:layout_below="@+id/createLine">
-
-    <TextView
-        android:layout_width="360dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="15dp"
-        android:text="                      Label Selection"
-        android:layout_marginTop="15dp"
-        android:id="@+id/label"
-        android:background="@color/colorW"
-        android:layout_marginRight="15dp"
-        android:textColor="#3aa8f5"
-        android:textSize="20dp" />
+        </RelativeLayout>
 
 
 
-</RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/line2"
+            android:layout_below="@+id/createLine">
+
+            <TextView
+                android:layout_width="360dp"
+                android:layout_height="30dp"
+                android:text="                        Label Selection"
+                android:layout_marginTop="15dp"
+                android:id="@+id/label"
+                android:background="@color/colorButtonBackground2"
+                android:textColor="@color/colorW"
+                android:textSize="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/label"
+                android:text=" "
+                android:background="@color/background"/>
 
 
 
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:horizontalSpacing="16dp"
-        android:layout_below="@+id/line2"
-        android:background="#fff"
-        android:numColumns="3"
-        android:verticalSpacing="48dp"></GridView>
+        </RelativeLayout>
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Refresh"
-        android:textColor="@color/colorButtonText"
-        android:layout_below="@+id/gridView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="30dp"
-        android:background="#fff"
-        android:layout_marginLeft="35dp"/>
+
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="16dp"
+            android:layout_below="@+id/line2"
+            android:background="@color/colorW"
+            android:numColumns="3"
+            android:verticalSpacing="48dp">
+
+        </GridView>
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:id="@+id/refresh"
+            android:textColor="@color/colorButtonText"
+            android:layout_below="@+id/gridView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:background="#fff"
+            />
+
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Confirm"
             android:textColor="#fff"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/gridView"
-            android:layout_marginRight="35dp"
-            android:layout_marginTop="30dp"
-            android:background="#6ab8ef"/>
+            android:layout_below="@+id/refresh"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorButtonText"/>
+    </RelativeLayout>
 
 
 
-</RelativeLayout>
+
