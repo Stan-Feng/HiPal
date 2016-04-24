@@ -1,5 +1,5 @@
 const Plan = require('./planModel');
-const User = require('../user/userModel');
+const User = require('../plan/planModel');
 
 module.exports = {
   params (req, res, next, userToken) {
@@ -7,8 +7,18 @@ module.exports = {
     next();
   },
 
+  get (req, res, next) {
+    Plan.find({})
+      .then(plans => {
+        res.json(plans);
+      })
+      .catch(err => {
+        next(err);
+      });
+  },
+
   post (req, res, next) {
-    
+
   },
 
   getPlanByUser (req, res, next) {
