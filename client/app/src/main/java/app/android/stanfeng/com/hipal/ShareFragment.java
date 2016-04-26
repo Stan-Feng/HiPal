@@ -40,7 +40,7 @@ public class ShareFragment extends Fragment {
     private int[] images3 = {R.drawable.image9,R.drawable.image4,R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image2,R.drawable.image9,R.drawable.image10,R.drawable.image2,R.drawable.image1};
     private int[] images4 = {R.drawable.image4,R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image4,R.drawable.image9,R.drawable.image10,R.drawable.image1,R.drawable.image1,R.drawable.image4};
     private SimpleAdapter simple;
-    List<Map<String, Object>> listItem;
+    private List<Map<String, Object>> listItem;
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -73,29 +73,25 @@ public class ShareFragment extends Fragment {
                     // The parameter "target" in this case is corresponded to param "myAdapter" above
                     public void exec(Object target, JSONArray results) {
                         // Extract "title" property from results
-                        String[] texts = new String[results.length()];
+                        String text = null;
 
-                        for (int i = 0; i < results.length(); i++) {
-                            try {
-                                texts[i] = results.getJSONObject(i).getString("text");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                        try {
+                            text = results.getJSONObject(0).getJSONArray("posts").getJSONObject(0).getString("text");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
 
                         // update adapter
-                        for (String text : texts) {
-                            Map<String, Object> item = new HashMap<String, Object>();
-                            item.put("ID", ID[0]);
-                            item.put("Avatar", avatar[0]);
-                            item.put("Comment", text);
-                            item.put("Images1", images1[0]);
-                            item.put("Images2", images2[0]);
-                            item.put("Images3", images3[0]);
-                            item.put("Images4", images4[0]);
-                            listItem.add(item);
-                            simple.notifyDataSetChanged();
-                        }
+                        Map<String, Object> item = new HashMap<String, Object>();
+                        item.put("ID", ID[0]);
+                        item.put("Avatar", avatar[0]);
+                        item.put("Comment", text);
+                        item.put("Images1", images1[0]);
+                        item.put("Images2", images2[1]);
+                        item.put("Images3", images3[2]);
+                        item.put("Images4", images4[3]);
+                        listItem.add(0, item);
+                        simple.notifyDataSetChanged();
                     }
                 });
 
@@ -130,8 +126,6 @@ public class ShareFragment extends Fragment {
                 new int[] {R.id.ID,R.id.avatar,R.id.comment,R.id.images1,R.id.images2,R.id.images3,R.id.images4});
         ListView listView = (ListView) r.findViewById(R.id.ListView);
         listView.setAdapter(simple);
-
-
 
         return r;
 
