@@ -10,7 +10,7 @@
             android:layout_height="60dp"
             android:id="@+id/shareCity"
             android:layout_marginTop="15dp"
-            android:background="@color/background">
+            android:background="@color/colorButtonBackground1">
             <TextView
                 android:id="@+id/city"
                 android:text="     Select A City"
@@ -51,8 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:textSize="20dp"
-        android:textColor="@color/colorW"
-        android:background="@color/colorButtonBackground2"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/background"
         android:text="SuZhou"
         android:lineSpacingExtra="15dp"
         android:gravity="center"
