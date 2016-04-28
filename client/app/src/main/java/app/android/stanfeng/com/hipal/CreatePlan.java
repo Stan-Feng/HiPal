@@ -21,11 +21,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import app.android.stanfeng.com.hipal.utils.AJAX;
+import app.android.stanfeng.com.hipal.utils.Callback;
 
 
 public class CreatePlan extends Fragment {
@@ -38,6 +43,7 @@ public class CreatePlan extends Fragment {
             R.drawable.minions3,R.drawable.minions4,R.drawable.minions5,R.drawable.minions6};
     private Spinner departure_spinner;
     private Spinner destination_spinner;
+    private String planID;
 
     private ArrayAdapter<CharSequence> adapter1;
     private ArrayAdapter<CharSequence> adapter2;
@@ -46,7 +52,7 @@ public class CreatePlan extends Fragment {
     private int Year;
     private int Month;
     private int Day;
-    private DatePickerDialog departure_date_dialog;
+    public DatePickerDialog departure_date_dialog;
     private DatePickerDialog destination_date_dialog;
     private TextView departure_date_text_view;
     private TextView destination_date_text_view;
@@ -71,7 +77,6 @@ public class CreatePlan extends Fragment {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 TextView tv = (TextView)view;
                 tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
 
@@ -80,6 +85,21 @@ public class CreatePlan extends Fragment {
                 tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
                 Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
                         Toast.LENGTH_LONG).show();
+
+                // Make AJAX Request extract new data
+                MainActivity main = (MainActivity) getContext();
+                String url = "http://45.79.1.223:3000/api/plan" + main.getPlanID();
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+
+                AJAX req = new AJAX(url, "GET", headers, null, null, new Callback() {
+                    @Override
+                    public void exec(Object target, JSONArray results) {
+
+                    }
+                });
+
+//                req.execute();
             }
 
             @Override
@@ -231,4 +251,15 @@ public class CreatePlan extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.w("On Resume", "***************");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.w("On Start", "***************");
+    }
 }

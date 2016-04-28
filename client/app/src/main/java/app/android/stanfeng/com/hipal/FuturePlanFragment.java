@@ -1,5 +1,6 @@
 package app.android.stanfeng.com.hipal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,13 +81,17 @@ public class FuturePlanFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }
         });
+
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MainActivity main = (MainActivity) getContext();
+                main.setPlanID("571cbe5c5c6296e9019c0dcc");
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }
