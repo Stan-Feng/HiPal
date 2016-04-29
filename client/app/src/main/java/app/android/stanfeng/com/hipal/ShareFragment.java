@@ -83,13 +83,22 @@ public class ShareFragment extends Fragment {
 
                         // update adapter
                         Map<String, Object> item = new HashMap<String, Object>();
-                        item.put("ID", ID[0]);
-                        item.put("Avatar", avatar[0]);
+                        int randomFactor = 0;
+                        if (Math.random() > 0.5) {
+                            randomFactor =1;
+                        } else {
+                            randomFactor = -1;
+                        }
+                        Double b = Math.random() * 30 / 3 + randomFactor;
+                        int randomID = b.intValue();
+
+                        item.put("ID", ID[randomID]);
+                        item.put("Avatar", avatar[randomID + 1]);
                         item.put("Comment", text);
-                        item.put("Images1", images1[0]);
-                        item.put("Images2", images2[1]);
-                        item.put("Images3", images3[2]);
-                        item.put("Images4", images4[3]);
+                        item.put("Images1", images1[randomID]);
+                        item.put("Images2", images2[randomID]);
+                        item.put("Images3", images3[randomID]);
+                        item.put("Images4", images4[randomID]);
                         listItem.add(0, item);
                         simple.notifyDataSetChanged();
                     }
