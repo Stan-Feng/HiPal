@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="@color/colorB"
-        android:text="Sport"
+        android:text=""
         android:layout_alignTop="@+id/user_image"
         android:layout_toRightOf="@+id/user_image"
         android:layout_marginRight="5dp"

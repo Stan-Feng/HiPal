@@ -24,10 +24,12 @@ import android.widget.Toast;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import app.android.stanfeng.com.hipal.utils.AJAX;
 import app.android.stanfeng.com.hipal.utils.Callback;
@@ -38,7 +40,8 @@ public class CreatePlan extends Fragment {
     // show label
     private GridView gridview_label;
 
-    private String[] lable = new String[]{"taste","movie","sport","music","sleep","idol"};
+    private String[] label = new String[]{"taste","movie","sport","music","sleep","idol"};
+    private String[] test = new String[]{"Sam","Mike","Tony","Kim","Linda","yahoo"};
     private int[] label_image = {R.drawable.minions1,R.drawable.minions2,
             R.drawable.minions3,R.drawable.minions4,R.drawable.minions5,R.drawable.minions6};
     private Spinner departure_spinner;
@@ -56,6 +59,11 @@ public class CreatePlan extends Fragment {
     private DatePickerDialog destination_date_dialog;
     private TextView departure_date_text_view;
     private TextView destination_date_text_view;
+
+    private SimpleAdapter simple;
+    private List<Map<String, Object>> gridView;
+    private String[] a = {"false","true","false","true","false","false"};
+    private ArrayList<String> selectedLabel = new ArrayList<String>(Arrays.asList(a));
 
 
     public CreatePlan() {
@@ -136,28 +144,32 @@ public class CreatePlan extends Fragment {
 
 
         //  TODO: show the label by gridView
-        List<Map<String, Object>> gridView = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < lable.length; i++) {
+        gridView = new ArrayList<Map<String, Object>>();
+        for (int i = 0; i < label.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
-            item.put("label_text", lable[i]);
+            item.put("label_text", label[i]);
             item.put("label_image", label_image[i]);
             gridView.add(item);
         }
 
-        final ArrayList<View> selectedViews = new ArrayList<>();
-
-        SimpleAdapter simple = new SimpleAdapter(container.getContext(), gridView,
+        simple = new SimpleAdapter(container.getContext(), gridView,
                 R.layout.fragment_create_plan_gridview_item, new String[]{"label_text", "label_image"},
                 new int[]{R.id.label_title, R.id.label_image});
         gridview_label = (GridView) v.findViewById(R.id.gridView);
         gridview_label.setAdapter(simple);
+
+        final ArrayList<View> selectedViews = new ArrayList<>();
         gridview_label.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (selectedViews.indexOf(view) >= 0) {
+                int indexPosition = selectedViews.indexOf(view);
+                if (indexPosition >= 0) {
                     view.setBackgroundColor(Color.parseColor("#EEEEEE"));
                     selectedViews.remove(selectedViews.indexOf(view));
+                    // selectedLabel.set(indexPosition, "true");
+                    a[indexPosition] = "true";
+                    // Log.v("selectedLabel", "selectedlabel");
                 } else if (selectedViews.size() >= 5) {
                     Toast.makeText(getActivity(), "You can only selected 5 labels!",
                             Toast.LENGTH_SHORT).show();
@@ -240,6 +252,26 @@ public class CreatePlan extends Fragment {
             }
         });
 
+        // TODO: click refresh button to send request and update the label from serve
+        Button refresh = (Button) v.findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // gridView.clear();
+                // String[] selected =(String[]) selectedLabel.toArray();
+                for ( int i = 0; i < test.length; i++) {
+                    // if (a[i].equals("false")) {
+                        Map<String, Object> item = new HashMap<String, Object>();
+                        item.put("label_text", test[i]);
+                        item.put("label_image", label_image[i]);
+                        gridView.set(i, item);
+                    // }
+                }
+                simple.notifyDataSetChanged();
+            }
+        });
+
+        // TODO: click confirm button to send request and show the search results from serve
         Button confirm = (Button) v.findViewById(R.id.confirm);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
