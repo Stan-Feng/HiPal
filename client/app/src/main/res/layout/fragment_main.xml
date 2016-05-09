@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_main"
-    android:background="#eee"
+    android:background="@drawable/minionsc"
     >
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#eee">
+    android:background="#00eeeeee"
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#d0e8f9"
+        android:background="#98d0e8f9"
         android:id="@+id/firstLine"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
@@ -70,8 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/jump1"
-        android:background="#fff"
-        android:textColor="#6ab8ef"
+        android:background="#7affffff"
+        android:textColor="#038cec"
         android:layout_marginTop="15dp"
 
         android:text="My Future Travel Plan"
@@ -82,9 +83,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/jump2"
-        android:background="#fff"
+        android:background="#7affffff"
         android:text="My Past Travel Plan"
-        android:textColor="#6ab8ef"
+        android:textColor="#0192f9"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/jump1"
         android:layout_centerHorizontal="true"
@@ -94,8 +95,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/jump3"
-        android:background="#fff"
-        android:textColor="#6ab8ef"
+        android:background="#76ffffff"
+        android:textColor="#0391f5"
         android:layout_marginTop="15dp"
         android:text=" My Security"
         android:layout_below="@+id/jump2"
@@ -109,7 +110,7 @@
         android:text="Personal Information Management"
         android:layout_marginTop="15dp"
         android:textColor="#fff"
-        android:background="#58b8fc"
+        android:background="#8958b8fc"
         android:layout_below="@+id/jump3"
         android:layout_centerHorizontal="true"
         />
