@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg1"
-    tools:context="app.android.stanfeng.com.hipal.WelcomeActivity">
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/guide_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="450dp">
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/radiogroup">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="      Log in      "
-            android:textColor="#fff"
-            android:background="#6ab8ef"
-            android:id="@+id/login"
-            android:layout_marginLeft="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true" />
+        <RadioButton
+            style="@style/radioButton"
+            android:id="@+id/radioButton"
+            android:checked="true" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="      sign up      "
-            android:id="@+id/signup"
-            android:textColor="#fff"
-            android:background="#6ab8ef"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="35dp" />
+        <RadioButton
+            style="@style/radioButton"
+            android:id="@+id/radioButton2" />
 
-    </RelativeLayout>
+    </RadioGroup>
 
-</RelativeLayout>
+</FrameLayout>

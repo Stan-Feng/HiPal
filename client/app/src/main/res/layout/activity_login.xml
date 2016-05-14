@@ -3,65 +3,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg2"
+    android:background="@drawable/bg12"
     tools:context="app.android.stanfeng.com.hipal.LoginActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="108dp">
 
-    <ImageView
-        android:id="@+id/account1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxHeight="40dp"
-        android:maxWidth="40dp"
-        android:src="@drawable/user1"
-        android:layout_marginTop="300dp"/>
-
-
-    <EditText
-        android:id="@+id/ed1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Account"
-        android:focusable="true"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/account1"
-        android:layout_marginTop="297dp"/>
-
-    <ImageView
-        android:id="@+id/pw1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxHeight="68dp"
-        android:maxWidth="68dp"
-        android:src="@drawable/password1"
-        android:layout_marginTop="350dp"
-        android:layout_alignRight="@+id/account1" />
+        <ImageView
+            android:id="@+id/account1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="40dp"
+            android:maxWidth="40dp"
+            android:src="@drawable/user1"
+            android:layout_marginTop="290dp"/>
 
 
-    <EditText
-        android:id="@+id/ed2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:hint="Password"
-        android:focusable="true"
-        android:layout_toRightOf="@id/pw1"
-        android:layout_marginTop="347dp"
-        android:layout_alignParentRight="true"/>
+        <EditText
+            android:id="@+id/ed1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Account"
+            android:focusable="true"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/account1"
+            android:layout_marginTop="287dp"/>
 
-    <Button
-        android:id="@+id/login1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="          Log In          "
-        android:layout_below="@+id/ed2"
-        android:layout_alignLeft="@+id/ed2"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="55dp"
-        android:background="@color/colorButtonText"/>
+        <ImageView
+            android:id="@+id/pw1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="68dp"
+            android:maxWidth="68dp"
+            android:src="@drawable/password1"
+            android:layout_marginTop="350dp"
+            android:layout_alignRight="@+id/account1" />
 
+
+        <EditText
+            android:id="@+id/ed2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:hint="Password"
+            android:focusable="true"
+            android:layout_toRightOf="@id/pw1"
+            android:layout_marginTop="347dp"
+            android:layout_alignParentRight="true"/>
+
+        <Button
+            android:id="@+id/login1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="          Log In          "
+            android:textColor="#fff"
+            android:layout_below="@+id/ed2"
+            android:layout_alignLeft="@+id/ed2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorButtonText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="310dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="525dp"
+        android:layout_marginLeft="22dp">
+
+        <TextView
+            android:id="@+id/sp"
+            android:text="Don't have an account?"
+            android:textSize="19dp"
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/colorButtonText"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="sign up"
+            android:textColor="#fff"
+            android:background="@color/colorButtonBackground2"
+            android:layout_alignTop="@+id/sp"
+            android:layout_marginRight="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/sp"/>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

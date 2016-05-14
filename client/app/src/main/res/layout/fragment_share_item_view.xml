@@ -8,7 +8,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text=" "
         android:id="@+id/textView2"
-         />
+        />
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="wrap_content"
@@ -42,12 +42,12 @@
         android:layout_below="@+id/ID"
         android:layout_toEndOf="@+id/avatar"
         />
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:id="@+id/images">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/images">
 
-  </RelativeLayout>
+    </RelativeLayout>
     <ImageView
         android:id="@+id/images1"
         android:layout_width="wrap_content"
@@ -101,5 +101,13 @@
         android:layout_below="@+id/images4"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:text=" "
+        android:id="@+id/textView4"
+        android:background="#eee"
+        android:layout_below="@+id/textView3"
+        />
 
 </RelativeLayout>

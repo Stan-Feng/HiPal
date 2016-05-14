@@ -9,6 +9,10 @@ import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private EditText  account=null;
+    private EditText  password=null;
+    private Button login1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         login1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                 LoginActivity.this.startActivity(mainIntent);
 

@@ -134,7 +134,7 @@ public class CreatePlan extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (selectedViews.indexOf(view) >= 0) {
-                    view.setBackgroundColor(Color.parseColor("#EEEEEE"));
+                    view.setBackgroundColor(Color.parseColor("#fff"));
                     selectedViews.remove(selectedViews.indexOf(view));
                 } else if (selectedViews.size() >= 5) {
                     Toast.makeText(getActivity(), "You can only selected 5 labels!",
@@ -159,7 +159,7 @@ public class CreatePlan extends Fragment {
 
         // init the date for departure
         departure_date_text_view = (TextView) v.findViewById(R.id.departure_date_text_view);
-        departure_date_text_view.setText(Month + " - " + Day + " - " + Year);
+        departure_date_text_view.setText(Year + " - " + Month + " - " + Day);
         departure_date_text_view.setTextColor(getResources().getColor(R.color.colorW));
         departure_date_text_view.setTextSize(13.0f);    //设置大小
 
@@ -169,7 +169,7 @@ public class CreatePlan extends Fragment {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
                 monthOfYear++;
-                departure_date_text_view.setText(monthOfYear + " - " + dayOfMonth + " - " + year);
+                departure_date_text_view.setText(year + " - " + monthOfYear + " - " +dayOfMonth );
 
 
 
@@ -190,7 +190,7 @@ public class CreatePlan extends Fragment {
 
         //  init the date  for destination
         destination_date_text_view = (TextView) v.findViewById(R.id.destination_date_text_view);
-        destination_date_text_view.setText(Month + " - " + Day + " - " + Year);
+        destination_date_text_view.setText(Year + " - " + Month + " - " + Day);
         destination_date_text_view.setTextColor(getResources().getColor(R.color.colorW));
         destination_date_text_view.setTextSize(13.0f);    //设置大小
 
@@ -202,7 +202,7 @@ public class CreatePlan extends Fragment {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
                 monthOfYear++;
-                destination_date_text_view.setText(monthOfYear + " - " + dayOfMonth + " - " + year);
+                destination_date_text_view.setText(year + " - " + monthOfYear + " - " +dayOfMonth );
 
 
             }
