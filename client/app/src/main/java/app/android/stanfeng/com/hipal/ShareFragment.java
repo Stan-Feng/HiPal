@@ -14,10 +14,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import app.android.stanfeng.com.hipal.utils.AJAX;
+import app.android.stanfeng.com.hipal.utils.Callback;
 
 
 public class ShareFragment extends Fragment {
@@ -33,6 +39,8 @@ public class ShareFragment extends Fragment {
     private int[] images2 = {R.drawable.image2,R.drawable.image7,R.drawable.image7,R.drawable.image2,R.drawable.image6,R.drawable.image7,R.drawable.image1,R.drawable.image9,R.drawable.image10,R.drawable.image1};
     private int[] images3 = {R.drawable.image9,R.drawable.image4,R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image2,R.drawable.image9,R.drawable.image10,R.drawable.image2,R.drawable.image1};
     private int[] images4 = {R.drawable.image4,R.drawable.image5,R.drawable.image6,R.drawable.image7,R.drawable.image4,R.drawable.image9,R.drawable.image10,R.drawable.image1,R.drawable.image1,R.drawable.image4};
+    private SimpleAdapter simple;
+    private List<Map<String, Object>> listItem;
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -54,6 +62,51 @@ public class ShareFragment extends Fragment {
 //                tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
 //                tv.setTextSize(20.0f);    //设置大小
 //                tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
+                // *************** Connect to database
+                String method = "GET";
+                String url = "http://45.79.1.223:3000/api/posts/Suzhou";
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+
+                AJAX req = new AJAX(url, method, headers, null, null, new Callback() {
+                    @Override
+                    // The parameter "target" in this case is corresponded to param "myAdapter" above
+                    public void exec(Object target, JSONArray results) {
+                        // Extract "title" property from results
+                        String text = null;
+
+                        try {
+                            text = results.getJSONObject(0).getJSONArray("posts").getJSONObject(0).getString("text");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        // update adapter
+                        Map<String, Object> item = new HashMap<String, Object>();
+                        int randomFactor = 0;
+                        if (Math.random() > 0.5) {
+                            randomFactor =1;
+                        } else {
+                            randomFactor = -1;
+                        }
+                        Double b = Math.random() * 30 / 3 + randomFactor;
+                        int randomID = b.intValue();
+
+                        item.put("ID", ID[randomID]);
+                        item.put("Avatar", avatar[randomID + 1]);
+                        item.put("Comment", text);
+                        item.put("Images1", images1[randomID]);
+                        item.put("Images2", images2[randomID]);
+                        item.put("Images3", images3[randomID]);
+                        item.put("Images4", images4[randomID]);
+                        listItem.add(0, item);
+                        simple.notifyDataSetChanged();
+                    }
+                });
+
+                // Sending the request
+                req.execute();
+                //**************** End
                 Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
                 Log.w("Share wrong selected: ", parent.getItemAtPosition(position) + "selected");
             }
@@ -65,7 +118,7 @@ public class ShareFragment extends Fragment {
         });
 
 
-        List<Map<String, Object>> listItem = new ArrayList<Map<String, Object>>();
+        listItem = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < ID.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("ID", ID[i]);
@@ -77,13 +130,11 @@ public class ShareFragment extends Fragment {
             item.put("Images4", images4[i]);
             listItem.add(item);
         }
-        SimpleAdapter simple = new SimpleAdapter(container.getContext(), listItem,
+        simple = new SimpleAdapter(container.getContext(), listItem,
                 R.layout.fragment_share_item_view, new String[] { "ID","Avatar","Comment","Images1","Images2","Images3","Images4"},
                 new int[] {R.id.ID,R.id.avatar,R.id.comment,R.id.images1,R.id.images2,R.id.images3,R.id.images4});
         ListView listView = (ListView) r.findViewById(R.id.ListView);
         listView.setAdapter(simple);
-
-
 
         return r;
 

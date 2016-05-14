@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#eee"
-    android:id="@+id/fragment_past_plan"
-    >
+    android:id="@+id/fragment_past_plan">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,8 +15,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#eee"
-            >
+            android:background="#eee">
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,8 +26,7 @@
                 android:layout_marginTop="15dp"
                 android:background="#fff"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
-
+                />
 
             <ListView
                 android:id="@+id/listView2"
@@ -46,12 +45,10 @@
                 android:layout_marginTop="15dp"
                 android:textColor="#fff"
                 android:background="#58b8fc"
-                android:layout_below="@+id/listView2"
-                />
+                android:layout_below="@+id/listView2" />
 
         </RelativeLayout>
 
     </RelativeLayout>
-
 
 </RelativeLayout>

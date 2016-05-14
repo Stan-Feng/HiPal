@@ -1,5 +1,6 @@
 package app.android.stanfeng.com.hipal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +35,8 @@ public class FuturePlanFragment extends Fragment {
             "2017.10.1-2017.10.7","2018.10.1-2018.10.7","2019.10.1-2019.10.7"
             };
     private String[] futurePlace = new String[] {"Shanghai","Beijing","Hangzhou","Wuhan","Tianjing"};
-    private int[] play1 = {R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2,R.drawable.pencil2};
+    private int[] play1 = {R.drawable.minions1,R.drawable.minions2,R.drawable.minions3,
+            R.drawable.minions4,R.drawable.minions5};
     private ViewPager viewPager;
 
     public FuturePlanFragment() {
@@ -79,13 +81,17 @@ public class FuturePlanFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }
         });
+
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MainActivity main = (MainActivity) getContext();
+                main.setPlanID("571cbe5c5c6296e9019c0dcc");
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }

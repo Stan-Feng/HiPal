@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:background="#eee"
     android:orientation="vertical"
-    tools:context=".CreatePlan"
-    >
+    tools:context=".CreatePlan">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +24,6 @@
             android:textSize="20dp"
             android:background="@color/colorW"/>
 
-
         <TextView
             android:layout_width="180dp"
             android:layout_height="30dp"
@@ -36,8 +34,8 @@
             android:layout_marginLeft="15dp"
             android:textSize="20dp"
             android:textColor="@color/colorButtonText"
-            android:layout_below="@+id/departure"
-            />
+            android:layout_below="@+id/departure" />
+
         <Spinner
             android:id="@+id/departure_spinner"
             android:layout_width="180dp"
@@ -48,6 +46,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/departure"
             android:layout_above="@+id/destination" />
+
         <Spinner
             android:id="@+id/destination_spinner"
             android:layout_width="180dp"
@@ -59,7 +58,6 @@
             android:layout_alignTop="@+id/destination"
             android:layout_alignBottom="@+id/destination" />
 
-
         <TextView
             android:layout_width="180dp"
             android:layout_height="30dp"
@@ -70,8 +68,8 @@
             android:background="@color/colorW"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
-            android:layout_below="@+id/destination"
-            />
+            android:layout_below="@+id/destination" />
+
         <TextView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -80,8 +78,8 @@
             android:textColor="@color/colorButtonText"
             android:layout_alignTop="@+id/date"
             android:layout_toEndOf="@+id/destination"
-            android:layout_toRightOf="@+id/destination"
-            />
+            android:layout_toRightOf="@+id/destination" />
+
         <TextView
             android:id="@+id/departure_date_text_view"
             android:layout_width="85dp"
@@ -92,6 +90,7 @@
             android:layout_marginRight="110dp"
             android:layout_alignTop="@+id/date"
             android:layout_alignBottom="@+id/date" />
+
         <TextView
             android:id="@+id/destination_date_text_view"
             android:layout_width="85dp"
@@ -104,9 +103,6 @@
             android:layout_alignBottom="@+id/date" />
 
     </RelativeLayout>
-
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -137,46 +133,44 @@
             android:text=" "
             android:background="@color/background"/>
 
+    </RelativeLayout>
 
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="16dp"
+            android:layout_below="@+id/line2"
+            android:background="@color/colorW"
+            android:numColumns="3"
+            android:verticalSpacing="48dp">
+
+        </GridView>
+
+        <Button
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:textColor="@color/colorButtonText"
+            android:layout_below="@+id/gridView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:background="#fff"
+            />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:textColor="#fff"
+            android:layout_below="@+id/refresh"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorButtonText"/>
 
     </RelativeLayout>
 
-
-
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:horizontalSpacing="16dp"
-        android:layout_below="@+id/line2"
-        android:background="@color/colorW"
-        android:numColumns="3"
-        android:verticalSpacing="48dp">
-
-    </GridView>
-
-    <Button
-        android:id="@+id/refresh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Refresh"
-        android:textColor="@color/colorButtonText"
-        android:layout_below="@+id/gridView"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="30dp"
-        android:background="#fff"
-        />
-
-    <Button
-        android:id="@+id/confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Confirm"
-        android:textColor="#fff"
-        android:layout_below="@+id/refresh"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorButtonText"/>
-</RelativeLayout>

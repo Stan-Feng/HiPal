@@ -22,7 +22,6 @@
             android:layout_alignParentLeft="true"
             android:visibility="gone"/>
 
-
     </RelativeLayout>
 
 </LinearLayout>

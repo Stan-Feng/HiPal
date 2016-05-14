@@ -11,6 +11,7 @@
         android:id="@+id/shareCity"
         android:layout_marginTop="15dp"
         android:background="@color/colorButtonBackground1">
+
         <TextView
             android:id="@+id/city"
             android:text="     Select A City"
@@ -23,8 +24,7 @@
             android:textColor="@color/colorButtonText"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            />
+            android:layout_alignParentLeft="true" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -42,9 +42,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/shareCity"
+        android:layout_below="@+id/shareCity">
 
-        >
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -57,9 +56,9 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:layout_below="@+id/shareCity"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="5dp"
@@ -79,13 +78,10 @@
             android:layout_alignParentLeft="true">
 
         </ListView>
+
     </RelativeLayout>
 
 </RelativeLayout>
-
-
-
-
 
 
 

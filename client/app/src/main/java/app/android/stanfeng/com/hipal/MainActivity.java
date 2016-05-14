@@ -15,6 +15,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String planID = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,5 +79,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
 
+    }
+
+    public String getPlanID() {
+        return planID;
+    }
+
+    public void setPlanID(String planID) {
+        this.planID = planID;
     }
 }

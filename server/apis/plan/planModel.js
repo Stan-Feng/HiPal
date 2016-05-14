@@ -34,7 +34,7 @@ const PlanSchema = new Schema({
     required: true
   },
 
-  labels: [{ type: Schema.Types.ObjectId, ref: 'label' }]
+  labels: [{ type: Schema.Types.ObjectId, ref: 'label', required: true }]
 
 });
 

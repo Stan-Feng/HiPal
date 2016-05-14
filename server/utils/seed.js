@@ -1,16 +1,19 @@
 const Post = require('../apis/post/postModel');
 const City = require('../apis/city/cityModel');
 const User = require('../apis/user/userModel');
+const Plan = require('../apis/plan/planModel');
 const Label = require('../apis/label/labelModel');
 
 const users = require('./fakeData').users;
 const posts = require('./fakeData').posts;
 const cities = require('./fakeData').cities;
 const labels = require('./fakeData').labels;
+const plans = require('./fakeData').plans;
 
 var savedUsers;
 var savedCities;
 var savedLabels;
+var savedPlans;
 
 const createDoc = function (Model, doc) {
   return new Promise((resolve, reject) => {
@@ -23,7 +26,7 @@ const createDoc = function (Model, doc) {
 const cleanDB = function () {
   console.log('....cleaning the test DB');
 
-  const models = [Post, City, User, Label];
+  const models = [Post, City, User, Label, Plan];
   return Promise.all(models.map(model => {
     return model.remove().exec();
   }));
@@ -72,7 +75,7 @@ const initLabels = function () {
   var l = Object.keys(labels)
     .map(key => (labels[key]));
   l = concatAll(l);
-  console.log(l);
+
   const promises = l.map(el => {
     return createDoc(Label, el);
   });
@@ -80,8 +83,29 @@ const initLabels = function () {
   return Promise.all(promises)
     .then(labels => {
       savedLabels = labels;
-      console.log(savedLabels);
       return labels;
+    });
+};
+
+const createPlan = function () {
+  const newPlans = plans.map((plan, i) => {
+    plan.city = savedCities[i % 20];
+    plan.user = savedUsers[i % 4];
+    plan.labels = [];
+    plan.labels.push(savedLabels[i % 11]);
+    plan.name = `From ${plan.startDate.toString()} to ${plan.endDate.toString()}.`;
+
+    return createDoc(Plan, plan);
+  });
+
+  return Promise.all(newPlans)
+    .then(plans => {
+      savedPlans = plans;
+
+      return plans;
+    })
+    .catch(err => {
+      throw err;
     });
 };
 
@@ -96,10 +120,10 @@ const addPosts = function () {
   return Promise.all(newPosts)
     .then(savedPosts => savedPosts)
     .then(function (savedPosts) {
-      console.log(savedUsers);
-      console.log(savedLabels);
-      console.log(savedCities);
-      console.log(savedPosts);
+      // console.log(savedUsers);
+      // console.log(savedLabels);
+      // console.log(savedCities);
+      // console.log(savedPosts);
       return 'Seed DB Done...';
     });
 
@@ -109,6 +133,7 @@ cleanDB()
   .then(createUser)
   .then(initCity)
   .then(initLabels)
+  .then(createPlan)
   .then(addPosts)
   .then(console.log)
   .catch(err => {

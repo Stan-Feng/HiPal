@@ -6,7 +6,7 @@
     >
 
     <ImageView
-        android:id="@+id/label_image"
+        android:id="@+id/user_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/minions1"
@@ -15,14 +15,14 @@
         android:maxWidth="40dp"/>
 
     <TextView
-        android:id="@+id/label_title"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="@color/colorB"
         android:text=""
-        android:layout_alignTop="@+id/label_image"
-        android:layout_toRightOf="@+id/label_image"
+        android:layout_alignTop="@+id/user_image"
+        android:layout_toRightOf="@+id/user_image"
         android:layout_marginRight="5dp"
-        android:layout_toEndOf="@+id/label_image" />
+        android:layout_toEndOf="@+id/user_image" />
 </RelativeLayout>
