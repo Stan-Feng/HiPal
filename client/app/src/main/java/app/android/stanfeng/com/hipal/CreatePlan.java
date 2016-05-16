@@ -95,19 +95,6 @@ public class CreatePlan extends Fragment {
 //                        Toast.LENGTH_LONG).show();
 
                 // Make AJAX Request extract new data
-                MainActivity main = (MainActivity) getContext();
-                String url = "http://45.79.1.223:3000/api/plan" + main.getPlanID();
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json");
-
-                AJAX req = new AJAX(url, "GET", headers, null, null, new Callback() {
-                    @Override
-                    public void exec(Object target, JSONArray results) {
-
-                    }
-                });
-
-//                req.execute();
             }
 
             @Override
@@ -132,8 +119,8 @@ public class CreatePlan extends Fragment {
                 tv.setTextSize(20.0f);    //设置大小
 
                 tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
-                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
+//                        Toast.LENGTH_LONG).show();
             }
 
             @Override

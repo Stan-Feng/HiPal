@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
 
-    private String planID = "";
+    private JSONObject user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String getPlanID() {
-        return planID;
+    public JSONObject getUser() {
+        return user;
     }
 
-    public void setPlanID(String planID) {
-        this.planID = planID;
+    public void setUser(JSONObject user) {
+        this.user = user;
     }
 }
