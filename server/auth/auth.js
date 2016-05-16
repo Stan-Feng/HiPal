@@ -17,10 +17,6 @@ module.exports = {
 
   decodeToken () {
     return (req, res, next) => {
-      if (req.query && req.query.hasOwrnProperty('access_token')) {
-        req.headers.authorization = 'Bearer ' + req.headers.access_token;
-      }
-
       checkToken(req, res, next);
     };
   },
@@ -29,6 +25,7 @@ module.exports = {
     return (req, res, next) => {
       User.findById(req.user._id)
         .then(user => {
+          console.log(user);
           if (!user) {
             res.status(401).send('UnauthorizedError');
           }
@@ -46,7 +43,7 @@ module.exports = {
     return (req, res, next) => {
       const username = req.body.username;
       const password = req.body.password;
-      
+
       if (!username || !password) {
         res.status(400).send('Username and password are required.');
 
