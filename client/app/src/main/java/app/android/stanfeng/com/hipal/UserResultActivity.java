@@ -1,8 +1,10 @@
 package app.android.stanfeng.com.hipal;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
@@ -18,10 +20,16 @@ public class UserResultActivity extends AppCompatActivity {
             R.drawable.minions3,R.drawable.minions4,R.drawable.minions5,R.drawable.minions6};
 
     private GridView gridview_user_research;
+    private Button cancelBtn;
+    private Button confirmBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_result);
+
+        cancelBtn = (Button) findViewById(R.id.resultCancel);
+        confirmBtn = (Button) findViewById(R.id.resultConfirm);
 
         //  TODO: show the label by gridView
         List<Map<String, Object>> gridView = new ArrayList<Map<String, Object>>();
@@ -39,5 +47,23 @@ public class UserResultActivity extends AppCompatActivity {
                 new int[]{R.id.user_image, R.id.user_name});
         gridview_user_research = (GridView) findViewById(R.id.UserGridView);
         gridview_user_research.setAdapter(simple);
+    }
+
+    public void setBtnEvents () {
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(UserResultActivity.this, MainActivity.class);
+                UserResultActivity.this.startActivity(mainIntent);
+            }
+        });
+
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(UserResultActivity.this, MainActivity.class);
+                UserResultActivity.this.startActivity(mainIntent);
+            }
+        });
     }
 }

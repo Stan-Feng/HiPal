@@ -263,10 +263,14 @@ public class CreatePlan extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO: Make AJAX Request
+
                 Intent userResult = new Intent(getActivity(), UserResultActivity.class);
                 startActivity(userResult);
             }
         });
+
+
         return v;
     }
 }

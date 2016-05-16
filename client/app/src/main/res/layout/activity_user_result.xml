@@ -27,11 +27,13 @@
         android:orientation="horizontal">
 
     <Button
+        android:id="@+id/resultCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:textSize="16sp"/>
     <Button
+        android:id="@+id/resultConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm"
