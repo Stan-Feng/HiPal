@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                         } finally {
                             if (token != null) {
                                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                mainIntent.putExtra("token", token);
                                 LoginActivity.this.startActivity(mainIntent);
                             } else {
                                 Toast.makeText(getBaseContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();

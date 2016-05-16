@@ -73,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if (token != null) {
                                 // After authentication
                                 Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                mainIntent.putExtra("token", token);
                                 RegisterActivity.this.startActivity(mainIntent);
                             } else {
                                 Toast.makeText(getBaseContext(), "Account name has been used", Toast.LENGTH_LONG).show();
