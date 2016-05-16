@@ -58,10 +58,6 @@ public class ShareFragment extends Fragment {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                TextView tv = (TextView) view;
-//                tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
-//                tv.setTextSize(20.0f);    //设置大小
-//                tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
                 // *************** Connect to database
                 String method = "GET";
                 String url = "http://45.79.1.223:3000/api/posts/Suzhou";
@@ -107,7 +103,7 @@ public class ShareFragment extends Fragment {
                 // Sending the request
                 req.execute();
                 //**************** End
-                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected", Toast.LENGTH_LONG).show();
                 Log.w("Share wrong selected: ", parent.getItemAtPosition(position) + "selected");
             }
 

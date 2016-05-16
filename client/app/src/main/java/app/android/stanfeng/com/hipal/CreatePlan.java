@@ -91,8 +91,8 @@ public class CreatePlan extends Fragment {
                 tv.setTextSize(20.0f);    //设置大小
 
                 tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
-                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
+//                        Toast.LENGTH_LONG).show();
 
                 // Make AJAX Request extract new data
                 MainActivity main = (MainActivity) getContext();
@@ -281,17 +281,5 @@ public class CreatePlan extends Fragment {
             }
         });
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.w("On Resume", "***************");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.w("On Start", "***************");
     }
 }

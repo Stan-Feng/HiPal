@@ -42,18 +42,17 @@ public class LoginActivity extends AppCompatActivity {
         login1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                LoginActivity.this.startActivity(mainIntent);
-
                 String url = "http://45.79.1.223:3000/auth/signin";
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
                 JSONObject data = new JSONObject();
 
+                String username = ed1.getText().toString();
+                String password = ed2.getText().toString();
+
                 try {
-                    data.put("username", "Junwen Feng"); // Exchange data to the view
-                    data.put("password", "test123");  // The same
+                    data.put("username", username); // Exchange data to the view
+                    data.put("password", password);  // The same
                 } catch (JSONException e) {
                     Log.e("JSON parse Error", e.toString());
                 }
