@@ -58,6 +58,9 @@ public class ShareFragment extends Fragment {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent == null || view == null) {
+                    return;
+                }
                 // *************** Connect to database
                 String method = "GET";
                 String url = "http://45.79.1.223:3000/api/posts/Suzhou";

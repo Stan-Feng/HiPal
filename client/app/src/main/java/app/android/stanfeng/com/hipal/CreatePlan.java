@@ -1,7 +1,6 @@
 package app.android.stanfeng.com.hipal;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,13 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +28,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import app.android.stanfeng.com.hipal.utils.AJAX;
 import app.android.stanfeng.com.hipal.utils.Callback;
@@ -41,7 +39,10 @@ public class CreatePlan extends Fragment {
     private GridView gridview_label;
 
     private String[] label = new String[]{"taste","movie","sport","music","sleep","idol"};
-    private String[] test = new String[]{"Sam","Mike","Tony","Kim","Linda","yahoo"};
+    private String[] refreshLabels;
+    private String[] allLabels = null;
+    private HashMap<Integer, Boolean> selectedLabels;
+
     private int[] label_image = {R.drawable.minions1,R.drawable.minions2,
             R.drawable.minions3,R.drawable.minions4,R.drawable.minions5,R.drawable.minions6};
     private Spinner departure_spinner;
@@ -63,14 +64,16 @@ public class CreatePlan extends Fragment {
     private SimpleAdapter simple;
     private List<Map<String, Object>> gridView;
     private String[] a = {"false","true","false","true","false","false"};
-    private ArrayList<String> selectedLabel = new ArrayList<String>(Arrays.asList(a));
 
 
     public CreatePlan() {
+
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create_plan, container, false);
+
+        initLabels();
 
         String tx4 = "----";
         TextView text = (TextView) v.findViewById(R.id.lineline);
@@ -85,6 +88,9 @@ public class CreatePlan extends Fragment {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent == null || view == null) {
+                    return;
+                }
                 TextView tv = (TextView)view;
                 tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
 
@@ -239,21 +245,25 @@ public class CreatePlan extends Fragment {
             }
         });
 
-        // TODO: click refresh button to send request and update the label from serve
+        // Init selectedLabels map
+        selectedLabels = new HashMap<Integer, Boolean>();
+        for (int i = 0; i < 6; i++ ) {
+            selectedLabels.put(i, false);
+        }
+
+        //click refresh button to send request and update the label from serve
         Button refresh = (Button) v.findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // gridView.clear();
-                // String[] selected =(String[]) selectedLabel.toArray();
-                for ( int i = 0; i < test.length; i++) {
+//                for ( int i = 0; i < test.length; i++) {
                     // if (a[i].equals("false")) {
-                    Map<String, Object> item = new HashMap<String, Object>();
-                    item.put("label_text", test[i]);
-                    item.put("label_image", label_image[i]);
-                    gridView.set(i, item);
-                    // }
-                }
+//                    Map<String, Object> item = new HashMap<String, Object>();
+//                    item.put("label_text", test[i]);
+//                    item.put("label_image", label_image[i]);
+//                    gridView.set(i, item);
+//                }
+
                 simple.notifyDataSetChanged();
             }
         });
@@ -266,11 +276,43 @@ public class CreatePlan extends Fragment {
                 // TODO: Make AJAX Request
 
                 Intent userResult = new Intent(getActivity(), UserResultActivity.class);
+                userResult.putExtra("token", getActivity().getIntent().getExtras().getString("token"));
                 startActivity(userResult);
             }
         });
 
 
         return v;
+    }
+
+    private String[] onRefreshButtonClick () {
+
+        return null;
+    }
+
+    private void initLabels () {
+        String method = "GET";
+        String url = "http://45.79.1.223:3000/api/label";
+        HashMap<String, String> headers = new HashMap<String, String>();
+        headers.put("Content-Type", "application/json");
+
+        AJAX req = new AJAX(url, method, headers, null, allLabels, new Callback() {
+            @Override
+            public void exec(Object target, JSONArray results) {
+                for (int i = 0; i < results.length(); i++) {
+                    try {
+                        allLabels[i] = results.getJSONObject(i).getString("name");
+                    } catch (JSONException e) {
+                        Log.e("JSON Exception", e.toString());
+                    }
+                }
+
+                target = allLabels;
+                Toast.makeText(getContext(), target.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        // Sending the request
+        req.execute();
     }
 }

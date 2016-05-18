@@ -40,7 +40,11 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
-        this.userToken = getActivity().getIntent().getExtras().getString("token");
+        try {
+            this.userToken = getActivity().getIntent().getExtras().getString("token");
+        } catch (NullPointerException e) {
+            this.userToken = null;
+        }
 //        Toast.makeText(getContext(), getActivity().getIntent().getExtras().getString("token"), Toast.LENGTH_LONG).show();
 
         viewPager = (ViewPager) container.findViewById(R.id.pager);
@@ -56,6 +60,9 @@ public class MainActivityFragment extends Fragment {
         initViewEvent(v);
 
         // AJAX request to extract new data from server
+        if (userToken == null) {
+            return v;
+        }
         String method = "GET";
         String url = "http://45.79.1.223:3000/api/user/me";
         HashMap<String, String> headers = new HashMap<String, String>();

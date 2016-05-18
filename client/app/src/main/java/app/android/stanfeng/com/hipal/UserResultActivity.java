@@ -47,6 +47,8 @@ public class UserResultActivity extends AppCompatActivity {
                 new int[]{R.id.user_image, R.id.user_name});
         gridview_user_research = (GridView) findViewById(R.id.UserGridView);
         gridview_user_research.setAdapter(simple);
+
+        setBtnEvents();
     }
 
     public void setBtnEvents () {
@@ -54,6 +56,7 @@ public class UserResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(UserResultActivity.this, MainActivity.class);
+                mainIntent.putExtra("token", getIntent().getExtras().getString("token"));
                 UserResultActivity.this.startActivity(mainIntent);
             }
         });
