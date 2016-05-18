@@ -40,7 +40,8 @@ public class CreatePlan extends Fragment {
 
     private String[] label = new String[]{"taste","movie","sport","music","sleep","idol"};
     private String[] refreshLabels;
-    private String[] allLabels = null;
+    private int refreshFlag = 0;
+    private String[] allLabels;
     private HashMap<Integer, Boolean> selectedLabels;
 
     private int[] label_image = {R.drawable.minions1,R.drawable.minions2,
@@ -160,6 +161,7 @@ public class CreatePlan extends Fragment {
                 if (indexPosition >= 0) {
                     view.setBackgroundColor(Color.parseColor("#EEEEEE"));
                     selectedViews.remove(selectedViews.indexOf(view));
+                    selectedLabels.put(position, false);
                     // selectedLabel.set(indexPosition, "true");
                     a[indexPosition] = "true";
                     // Log.v("selectedLabel", "selectedlabel");
@@ -169,6 +171,7 @@ public class CreatePlan extends Fragment {
                 } else {
                     view.setBackgroundColor(Color.parseColor("#68bee6"));
                     selectedViews.add(view);
+                    selectedLabels.put(position, true);
                 }
             }
         });
@@ -252,10 +255,17 @@ public class CreatePlan extends Fragment {
         }
 
         //click refresh button to send request and update the label from serve
-        Button refresh = (Button) v.findViewById(R.id.refresh);
+        final Button refresh = (Button) v.findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
+                int[] unselectedPos = unselectedPosition();
+                for (int i = refreshFlag; i < refreshFlag + unselectedPos.length; i++) {
+                    if (i >= allLabels.length - 1) refreshFlag = 0;
+                    Map<String, Object> item = new HashMap<String, Object>();
+                    item.put("label_text", allLabels[i]);
+                    item.put("label_image", label_image[i % 6]);
+                    gridView.set(i % 6, item);
+                }
 //                for ( int i = 0; i < test.length; i++) {
                     // if (a[i].equals("false")) {
 //                    Map<String, Object> item = new HashMap<String, Object>();
@@ -265,6 +275,7 @@ public class CreatePlan extends Fragment {
 //                }
 
                 simple.notifyDataSetChanged();
+                refreshFlag += 6;
             }
         });
 
@@ -295,24 +306,34 @@ public class CreatePlan extends Fragment {
         String url = "http://45.79.1.223:3000/api/label";
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "application/json");
-
-        AJAX req = new AJAX(url, method, headers, null, allLabels, new Callback() {
+        AJAX req = new AJAX(url, method, headers, null, null, new Callback() {
             @Override
             public void exec(Object target, JSONArray results) {
+                allLabels = new String[results.length()];
+
                 for (int i = 0; i < results.length(); i++) {
                     try {
-                        allLabels[i] = results.getJSONObject(i).getString("name");
+                         allLabels[i] = results.getJSONObject(i).getString("name");
                     } catch (JSONException e) {
                         Log.e("JSON Exception", e.toString());
                     }
                 }
-
-                target = allLabels;
-                Toast.makeText(getContext(), target.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
         // Sending the request
         req.execute();
+    }
+
+    private int[] unselectedPosition () {
+        int[] pos = {-1, -1, -1, -1, -1, -1};
+
+        for (Integer key: this.selectedLabels.keySet()) {
+            if (!selectedLabels.get(key)) {
+                pos[key] = key;
+            }
+        }
+
+        return pos;
     }
 }

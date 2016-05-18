@@ -51,7 +51,6 @@ public class MainActivityFragment extends Fragment {
         nn = "niuniu";
         sn = "I love duanwu";
         tv1 = (TextView) v.findViewById(R.id.nickname);
-//        tv1.setText(nn);
         tv2 = (TextView) v.findViewById(R.id.signature);
         tv2.setText(sn);
         tv3 = (TextView) v.findViewById(R.id.blue);
