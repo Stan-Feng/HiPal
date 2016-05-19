@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Research Results"
+        android:text="Search Results"
         android:textSize="36sp"/>
 
     <GridView
@@ -30,14 +30,7 @@
         android:id="@+id/resultCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="Back"
         android:textSize="16sp"/>
-    <Button
-        android:id="@+id/resultConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm"
-        android:textSize="16sp"/>
-
     </LinearLayout>
 </LinearLayout>

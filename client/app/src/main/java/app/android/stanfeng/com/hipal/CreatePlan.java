@@ -23,7 +23,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -98,10 +97,6 @@ public class CreatePlan extends Fragment {
                 tv.setTextSize(20.0f);    //设置大小
 
                 tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
-//                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
-//                        Toast.LENGTH_LONG).show();
-
-                // Make AJAX Request extract new data
             }
 
             @Override
@@ -126,8 +121,6 @@ public class CreatePlan extends Fragment {
                 tv.setTextSize(20.0f);    //设置大小
 
                 tv.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
-//                Toast.makeText(getContext(), parent.getItemAtPosition(position) + "selected",
-//                        Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -195,12 +188,8 @@ public class CreatePlan extends Fragment {
         DatePickerDialog.OnDateSetListener dateSetListener1 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
                 monthOfYear++;
                 departure_date_text_view.setText(monthOfYear + " - " + dayOfMonth + " - " + year);
-
-
-
             }
         };
         departure_date_dialog = new DatePickerDialog(getContext(), dateSetListener1, Year, Month, Day);
@@ -231,7 +220,6 @@ public class CreatePlan extends Fragment {
 
                 monthOfYear++;
                 destination_date_text_view.setText(monthOfYear + " - " + dayOfMonth + " - " + year);
-
 
             }
         };
@@ -264,14 +252,6 @@ public class CreatePlan extends Fragment {
                     item.put("label_image", label_image[i % 6]);
                     gridView.set(unselectedPos[j], item);
                 }
-//                for ( int i = 0; i < test.length; i++) {
-                    // if (a[i].equals("false")) {
-//                    Map<String, Object> item = new HashMap<String, Object>();
-//                    item.put("label_text", test[i]);
-//                    item.put("label_image", label_image[i]);
-//                    gridView.set(i, item);
-//                }
-
                 simple.notifyDataSetChanged();
                 refreshFlag += 6;
             }
@@ -283,9 +263,15 @@ public class CreatePlan extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO: Make AJAX Request
-
                 Intent userResult = new Intent(getActivity(), UserResultActivity.class);
                 userResult.putExtra("token", getActivity().getIntent().getExtras().getString("token"));
+                try {
+                    MainActivity main = (MainActivity) getContext();
+                    String nickname = main.getUser().getString("nickname");
+                    userResult.putExtra("nickname", nickname);
+                } catch (JSONException e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
                 startActivity(userResult);
             }
         });

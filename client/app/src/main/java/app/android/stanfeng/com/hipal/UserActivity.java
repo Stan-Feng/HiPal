@@ -21,7 +21,7 @@ public class UserActivity extends AppCompatActivity {
     private ListView l1,l2,l3;
     private Button cancel;
     private String[] leftContent = {"Name", "ID Number", "Signature", "Gender", "Region"};
-    private String[] rightContent = {"niuniu", "123456789", "I love duanwu", "Female", "China"};
+//    private String[] rightContent = {"niuniu", "123456789", "I love duanwu", "Female", "China"};
     private String[] futureTime= new String[]{"2015.10.1-2015.10.7","2016.10.1-2016.10.7",
             "2017.10.1-2017.10.7","2018.10.1-2018.10.7","2019.10.1-2019.10.7"};
     private String[] futurePlace = new String[] {"Shanghai","Beijing","Hangzhou","Wuhan","Tianjing"};
@@ -37,9 +37,10 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Bundle extras = getIntent().getExtras();
         String nn = "Profile Photo";
         t1 = (TextView) findViewById(R.id.nick);
-        t1.setText(nn);
+        t1.setText(extras.getString("nickname"));
         t3 = (TextView) findViewById(R.id.blue);
         t3.setText("");
 
@@ -50,7 +51,8 @@ public class UserActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
+        String[] rightContent = {extras.getString("nickename"), extras.getString("_id"),
+                extras.getString("signature"), extras.getString("gender"), extras.getString("city")};
         List<Map<String, Object>> listItem3 = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < leftContent.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
