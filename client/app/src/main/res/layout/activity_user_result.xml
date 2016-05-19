@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorW"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Results"
-        android:textSize="36sp"/>
+        android:text="               Search Results"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorButtonText"
+        android:background="@color/colorW"
+        android:textSize="28sp"/>
 
     <GridView
         android:id="@+id/UserGridView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="197dp"
         android:background="@color/colorW"
         android:horizontalSpacing="16dp"
         android:numColumns="3"
+        android:layout_marginTop="20dp"
         android:verticalSpacing="48dp">
     </GridView>
 
@@ -28,8 +32,11 @@
 
     <Button
         android:id="@+id/resultCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorW"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorButtonText"
         android:text="Back"
         android:textSize="16sp"/>
     </LinearLayout>

@@ -41,7 +41,6 @@ public class UserResultActivity extends AppCompatActivity {
 
         this.token = getIntent().getExtras().getString("token");
 
-
         cancelBtn = (Button) findViewById(R.id.resultCancel);
 
         //  TODO: show the label by gridView
