@@ -40,6 +40,10 @@ const UserSchema = new Schema({
     required: true
   },
 
+  wechatID: {
+    type: String
+  },
+
   plans: [{ type: Schema.Types.ObjectId, ref: 'plan' }],
 
   posts: [{ type: Schema.Types.ObjectId, ref: 'post' }]

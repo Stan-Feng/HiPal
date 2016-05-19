@@ -20,7 +20,7 @@ public class UserActivity extends AppCompatActivity {
     private TextView t1, t2,t3;
     private ListView l1,l2,l3;
     private Button cancel;
-    private String[] leftContent = {"Name", "ID Number", "Signature", "Gender", "Region"};
+    private String[] leftContent = {"Name", "WechatID", "Signature", "Gender", "Region"};
 //    private String[] rightContent = {"niuniu", "123456789", "I love duanwu", "Female", "China"};
     private String[] futureTime= new String[]{"2015.10.1-2015.10.7","2016.10.1-2016.10.7",
             "2017.10.1-2017.10.7","2018.10.1-2018.10.7","2019.10.1-2019.10.7"};
@@ -51,7 +51,7 @@ public class UserActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        String[] rightContent = {extras.getString("nickename"), extras.getString("_id"),
+        String[] rightContent = {extras.getString("nickename"), extras.getString("wechatID"),
                 extras.getString("signature"), extras.getString("gender"), extras.getString("city")};
         List<Map<String, Object>> listItem3 = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < leftContent.length; i++) {

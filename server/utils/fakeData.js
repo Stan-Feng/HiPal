@@ -31,7 +31,8 @@ const users = ['Anan Wang', 'Junwen Feng', 'Mengyu Wang', 'Min Cao']
     signature: 'I am ' + name,
     gender: (i % 2) === 0 ? 'Female' : 'Male',
     city: 'Suzhou',
-    age: 21
+    age: 21,
+    wechatID: name.split(' ')[0] + '_wechatID'
   }));
 
 const posts = [

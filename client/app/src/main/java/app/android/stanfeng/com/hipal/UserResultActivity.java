@@ -59,6 +59,7 @@ public class UserResultActivity extends AppCompatActivity {
                 Intent profile = new Intent(UserResultActivity.this, UserActivity.class);
                 profile.putExtra("token", getIntent().getExtras().getString("token"));
                 profile.putExtra("_id", users[position].getId());
+                profile.putExtra("wechatID", users[position].getWechatID());
                 profile.putExtra("nickname", users[position].getNickname());
                 profile.putExtra("username", users[position].getUsername());
                 profile.putExtra("age", users[position].getAge());
@@ -92,8 +93,9 @@ public class UserResultActivity extends AppCompatActivity {
                         String username =  user.getString("username");
                         String nickname =  user.getString("nickname");
                         String signature =  user.getString("signature");
+                        String wechatID =  user.getString("wechatID");
 
-                        users[i] = new User(username, nickname, id, signature, city, gender, age);
+                        users[i] = new User(username, nickname, id, wechatID,signature, city, gender, age);
 //                        Toast.makeText(getBaseContext(), users[i].toString(), Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();

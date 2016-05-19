@@ -1,18 +1,20 @@
 package app.android.stanfeng.com.hipal;
 
 public class User {
+    private final String id;
+    private final String wechatID;
     private final String username;
     private final String nickname;
-    private final String id;
     private final String signature;
     private final String city;
     private final String gender;
     private final int age;
 
-    public User (String username, String nickname, String id, String signature, String city, String gender, int age) {
+    public User (String username, String nickname, String id, String wechatID, String signature, String city, String gender, int age) {
         this.username = username;
         this.nickname = nickname;
         this.id = id;
+        this.wechatID = wechatID;
         this.signature = signature;
         this.city = city;
         this.gender = gender;
@@ -50,5 +52,9 @@ public class User {
     @Override
     public String toString() {
         return nickname + " " + age + " " + gender;
+    }
+
+    public String getWechatID() {
+        return wechatID;
     }
 }
