@@ -159,12 +159,10 @@ public class CreatePlan extends Fragment {
 
                 int indexPosition = selectedViews.indexOf(view);
                 if (indexPosition >= 0) {
-                    view.setBackgroundColor(Color.parseColor("#EEEEEE"));
+                    view.setBackgroundColor(Color.parseColor("#ffffff"));
                     selectedViews.remove(selectedViews.indexOf(view));
                     selectedLabels.put(position, false);
-                    // selectedLabel.set(indexPosition, "true");
                     a[indexPosition] = "true";
-                    // Log.v("selectedLabel", "selectedlabel");
                 } else if (selectedViews.size() >= 5) {
                     Toast.makeText(getActivity(), "You can only selected 5 labels!",
                             Toast.LENGTH_SHORT).show();
@@ -259,12 +257,12 @@ public class CreatePlan extends Fragment {
         refresh.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int[] unselectedPos = unselectedPosition();
-                for (int i = refreshFlag; i < refreshFlag + unselectedPos.length; i++) {
+                for (int i = refreshFlag, j = 0; i < refreshFlag + unselectedPos.length && j < unselectedPos.length; i++, j++) {
                     if (i >= allLabels.length - 1) refreshFlag = 0;
                     Map<String, Object> item = new HashMap<String, Object>();
                     item.put("label_text", allLabels[i]);
                     item.put("label_image", label_image[i % 6]);
-                    gridView.set(i % 6, item);
+                    gridView.set(unselectedPos[j], item);
                 }
 //                for ( int i = 0; i < test.length; i++) {
                     // if (a[i].equals("false")) {
@@ -326,14 +324,24 @@ public class CreatePlan extends Fragment {
     }
 
     private int[] unselectedPosition () {
+        int selectedNum = 0;
         int[] pos = {-1, -1, -1, -1, -1, -1};
 
         for (Integer key: this.selectedLabels.keySet()) {
             if (!selectedLabels.get(key)) {
                 pos[key] = key;
+                selectedNum++;
             }
         }
 
-        return pos;
+        int[] selectedLabelPos = new int[selectedNum];
+        for (int i = 0, j = 0; i < pos.length && j < selectedLabelPos.length; i++) {
+            if (pos[i] != -1) {
+                selectedLabelPos[j] = pos[i];
+                j++;
+            }
+        }
+
+        return selectedLabelPos;
     }
 }
