@@ -98,18 +98,19 @@ public class UserResultActivity extends AppCompatActivity {
                         users[i] = new User(username, nickname, id, wechatID,signature, city, gender, age);
 //                        Toast.makeText(getBaseContext(), users[i].toString(), Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
-                        Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
 
                 String currNickname = getIntent().getExtras().getString("nickname");
                 for (int i = 0; i < users.length; i++) {
-                    Map<String, Object> item = new HashMap<String, Object>();
+                    // TODO: Make filter of login user
                     try {
                         if (currNickname.equals(users[i].getNickname())) continue;
                     } catch (NullPointerException e) {
-                        Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+                        continue;
                     }
+                    Map<String, Object> item = new HashMap<String, Object>();
                     item.put("user_image", user_image[i]);
                     item.put("user_name", users[i].getNickname());
                     item.put("user_id", users[i].getId());
