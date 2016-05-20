@@ -41,7 +41,7 @@ public class SecurityFragment extends Fragment {
             public void onClick(View view) {
 //                Toast.makeText(getContext(), "Change Password Clicked", Toast.LENGTH_LONG).show();
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_security, new ChangePasswordFragment())
+                        .replace(R.id.fragment_main, new ChangePasswordFragment())
                         .addToBackStack(null)
                         .commit();
             }
@@ -54,7 +54,7 @@ public class SecurityFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Privacy Clicked", Toast.LENGTH_LONG).show();
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_security, new PrivacyFragment())
+                        .replace(R.id.fragment_main, new PrivacyFragment())
                         .addToBackStack(null)
                         .commit();
             }

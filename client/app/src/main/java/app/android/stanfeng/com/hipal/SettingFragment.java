@@ -30,8 +30,8 @@ public class SettingFragment extends Fragment {
     private int photo = R.drawable.niuniu_duanwu;
     private Button cancel,edit,jump4;
     private OnButtonClick onButtonClick;
-    private String[] leftContent = {"Name", "ID Number", "Signature", "Gender", "Region"};
-    private String[] rightContent = {"niuniu", "123456789", "I love duanwu", "Female", "China"};
+    private String[] leftContent = {"Name", "wechatID", "Signature", "Gender", "City"};
+    private String[] rightContent = {"Anan Wang", "Anan_wechatID", "I am Wang Anan", "Female", "Suzhou"};
 
     public SettingFragment() {
     }
