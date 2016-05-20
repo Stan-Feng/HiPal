@@ -36,12 +36,14 @@ public class SecurityFragment extends Fragment {
             }
         });
         change = (Button) v.findViewById(R.id.changePassword);
-
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Change Password Clicked", Toast.LENGTH_LONG).show();
-
+//                Toast.makeText(getContext(), "Change Password Clicked", Toast.LENGTH_LONG).show();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_security, new ChangePasswordFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -51,7 +53,10 @@ public class SecurityFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Privacy Clicked", Toast.LENGTH_LONG).show();
-
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_security, new PrivacyFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
