@@ -90,9 +90,10 @@ public class FuturePlanFragment extends Fragment {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                MainActivity main = (MainActivity) getContext();
+                MainActivity main = (MainActivity) getContext();
 //                main.setPlanID("571cbe5c5c6296e9019c0dcc");
-
+                String PlanID = "";
+                main.getCreatePlanFragment().updateView();
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }

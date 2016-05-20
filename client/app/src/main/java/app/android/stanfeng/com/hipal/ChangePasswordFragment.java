@@ -104,8 +104,8 @@ public class ChangePasswordFragment extends Fragment {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().onBackPressed();
                 Toast.makeText(getContext(), "Password changed", Toast.LENGTH_LONG).show();
+                getActivity().onBackPressed();
 
             }
         });

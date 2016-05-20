@@ -51,7 +51,6 @@
             android:textSize="20dp"
             android:textColor="@color/colorButtonText"
             android:background="@color/background"
-            android:text="SuZhou"
             android:lineSpacingExtra="15dp"
             android:gravity="center"
             android:layout_marginTop="10dp"

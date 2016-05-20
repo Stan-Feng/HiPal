@@ -9,9 +9,11 @@ import android.view.MenuItem;
 
 import org.json.JSONObject;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private JSONObject user;
+    private CreatePlan createPlanFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPager = (ViewPager) this.findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
+
+        this.createPlanFragment = (CreatePlan) adapter.getItem(1);
+
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -83,5 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUser(JSONObject user) {
         this.user = user;
+    }
+
+    public CreatePlan getCreatePlanFragment() {
+        return createPlanFragment;
     }
 }

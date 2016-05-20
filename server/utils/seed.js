@@ -120,10 +120,6 @@ const addPosts = function () {
   return Promise.all(newPosts)
     .then(savedPosts => savedPosts)
     .then(function (savedPosts) {
-      // console.log(savedUsers);
-      // console.log(savedLabels);
-      // console.log(savedCities);
-      // console.log(savedPosts);
       return 'Seed DB Done...';
     });
 

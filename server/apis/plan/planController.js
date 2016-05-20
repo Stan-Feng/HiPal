@@ -9,6 +9,9 @@ module.exports = {
 
   get (req, res, next) {
     Plan.find({})
+      .populate('city')
+      .populate('user')
+      .populate('labels')
       .then(plans => {
         res.json(plans);
       })

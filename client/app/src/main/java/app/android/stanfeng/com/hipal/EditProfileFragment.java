@@ -120,7 +120,7 @@ public class EditProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Save Change Clicked", Toast.LENGTH_LONG).show();
-
+                getActivity().onBackPressed();
             }
         });
 

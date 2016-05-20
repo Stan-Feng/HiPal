@@ -330,4 +330,8 @@ public class CreatePlan extends Fragment {
 
         return selectedLabelPos;
     }
+
+    public void updateView () {
+
+    }
 }

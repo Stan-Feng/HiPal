@@ -11,7 +11,13 @@ import android.widget.Button;
 
 
 public class PrivacyFragment extends Fragment {
-   private Button cancel;
+    private Button cancel;
+    private Button showID;
+
+    private Boolean flag = false;
+    private String show = "Show WechatID to others.";
+    private String hide = "Hide WechatID to others.";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,22 @@ public class PrivacyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
+            }
+        });
+
+
+        showID = (Button) v.findViewById(R.id.showID);
+        showID.setText("Show WechatID to others.");
+        showID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    showID.setText(show);
+                    flag = false;
+                } else {
+                    showID.setText(hide);
+                    flag = true;
+                }
             }
         });
         return v;
