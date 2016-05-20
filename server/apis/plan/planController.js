@@ -26,6 +26,9 @@ module.exports = {
 
   getPlanByUser (req, res, next) {
     Plan.find({ user: req.user._id })
+      .populate('city')
+      .populate('user')
+      .populate('labels')
       .then(plans => {
         if (plans.length === 0) {
           next(new Error('No plan found'));
