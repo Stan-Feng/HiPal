@@ -20,21 +20,26 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
+import app.android.stanfeng.com.hipal.utils.AJAX;
+import app.android.stanfeng.com.hipal.utils.Callback;
 
 
 public class FuturePlanFragment extends Fragment {
     private ListView lv1;
     private Button cancel;
     private Button add;
-    private OnButtonClick onButtonClick;
-    private String[] futureTime= new String[]{"2015.10.1-2015.10.7","2016.10.1-2016.10.7",
-            "2017.10.1-2017.10.7","2018.10.1-2018.10.7","2019.10.1-2019.10.7"
-            };
-    private String[] futurePlace = new String[] {"Shanghai","Beijing","Hangzhou","Wuhan","Tianjing"};
     private int[] play1 = {R.drawable.minions1,R.drawable.minions2,R.drawable.minions3,
             R.drawable.minions4,R.drawable.minions5};
     private ViewPager viewPager;
@@ -63,19 +68,45 @@ public class FuturePlanFragment extends Fragment {
             }
         });
 
-        List<Map<String, Object>> listItem1 = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < futureTime.length; i++) {
-            Map<String, Object> item1 = new HashMap<String, Object>();
-            item1.put("time", futureTime[i]);
-            item1.put("play", play1[i]);
-            item1.put("place",futurePlace[i]);
-            listItem1.add(item1);
-        }
-        SimpleAdapter simple1 = new SimpleAdapter(container.getContext(), listItem1,
+        final List<Map<String, Object>> listItem1 = new ArrayList<Map<String, Object>>();
+
+        final SimpleAdapter simple1 = new SimpleAdapter(container.getContext(), listItem1,
                 R.layout.fragment_main_simple_item, new String[] { "time","play","place"},
                 new int[] {R.id.time,R.id.play,R.id.place});
         lv1 = (ListView) v.findViewById(R.id.listView1);
         lv1.setAdapter(simple1);
+
+
+        String method = "GET";
+        String url = "http://45.79.1.223:3000/api/plan/" + getActivity().getIntent().getExtras().getString("token");
+        HashMap<String, String> headers = new HashMap<String, String>();
+        headers.put("Content-Type", "application/json");
+        AJAX req = new AJAX(url, method, headers, null, null, new Callback() {
+            @Override
+            public void exec(Object target, JSONArray results) {
+                try {
+                    JSONArray plans = results.getJSONObject(0).getJSONArray("plans");
+                    for (int i = 0; i < plans.length(); i++) {
+                        JSONObject plan = plans.getJSONObject(i);
+                        Map<String, Object> item = new HashMap<String, Object>();
+                        item.put("time", plan.getString("startDate").substring(0, 10) + " --- "
+                            + plan.getString("endDate").substring(0, 10));
+                        item.put("play", play1[i % 5]);
+                        item.put("place", plan.getJSONObject("city").getString("name"));
+                        listItem1.add(item);
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+
+
+                simple1.notifyDataSetChanged();
+            }
+        });
+
+        // Sending the request
+        req.execute();
+
 
         add = (Button) v.findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
@@ -90,10 +121,8 @@ public class FuturePlanFragment extends Fragment {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MainActivity main = (MainActivity) getContext();
-//                main.setPlanID("571cbe5c5c6296e9019c0dcc");
-                String PlanID = "";
-                main.getCreatePlanFragment().updateView();
+//                MainActivity main = (MainActivity) getContext();
+//                main.getCreatePlanFragment().updateView();
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }
