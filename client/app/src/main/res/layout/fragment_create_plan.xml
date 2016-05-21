@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#eee"
     android:orientation="vertical"
+    android:id="@+id/create_plan"
     tools:context=".CreatePlan">
 
     <RelativeLayout

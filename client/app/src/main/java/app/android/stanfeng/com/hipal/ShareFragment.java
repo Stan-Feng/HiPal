@@ -92,6 +92,8 @@ public class ShareFragment extends Fragment {
                         Double b = Math.random() * 30 / 3 + randomFactor;
                         int randomID = b.intValue() - 1;
                         randomID = randomID == 0 ? 0 : randomID - 1;
+                        if (randomID < 0 || randomID >= 10) randomID = 2;
+
                         item.put("ID", ID[randomID]);
                         item.put("Avatar", avatar[randomID + 1]);
                         item.put("Comment", text);

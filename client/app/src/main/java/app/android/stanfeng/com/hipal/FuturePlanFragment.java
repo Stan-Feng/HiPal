@@ -44,6 +44,8 @@ public class FuturePlanFragment extends Fragment {
             R.drawable.minions4,R.drawable.minions5};
     private ViewPager viewPager;
 
+    private Plan[] allPlans;
+
     public FuturePlanFragment() {
     }
 
@@ -56,7 +58,7 @@ public class FuturePlanFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_future_plan, container, false);
         viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
 
@@ -76,7 +78,6 @@ public class FuturePlanFragment extends Fragment {
         lv1 = (ListView) v.findViewById(R.id.listView1);
         lv1.setAdapter(simple1);
 
-
         String method = "GET";
         String url = "http://45.79.1.223:3000/api/plan/" + getActivity().getIntent().getExtras().getString("token");
         HashMap<String, String> headers = new HashMap<String, String>();
@@ -86,19 +87,31 @@ public class FuturePlanFragment extends Fragment {
             public void exec(Object target, JSONArray results) {
                 try {
                     JSONArray plans = results.getJSONObject(0).getJSONArray("plans");
+                    allPlans = new Plan[plans.length()];
+
                     for (int i = 0; i < plans.length(); i++) {
                         JSONObject plan = plans.getJSONObject(i);
                         Map<String, Object> item = new HashMap<String, Object>();
-                        item.put("time", plan.getString("startDate").substring(0, 10) + " --- "
-                            + plan.getString("endDate").substring(0, 10));
+                        String startDate = plan.getString("startDate").substring(0, 10);
+                        String endDate = plan.getString("endDate").substring(0, 10);
+
+                        allPlans[i] = new Plan(plan.getString("_id"), plan.getString("name"), startDate, endDate,
+                                plan.getBoolean("isArchieved"), plan.getJSONObject("city"),
+                                plan.getJSONObject("user"), plan.getJSONArray("labels"));
+
+                        if (plan.getBoolean("isArchieved")) continue;
+                        item.put("time", startDate + " --- " + endDate);
                         item.put("play", play1[i % 5]);
                         item.put("place", plan.getJSONObject("city").getString("name"));
                         listItem1.add(item);
+
                     }
                 } catch (JSONException e) {
                     Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
 
+                MainActivity main = (MainActivity) getContext();
+                main.setAllPlans(allPlans);
 
                 simple1.notifyDataSetChanged();
             }
@@ -112,7 +125,6 @@ public class FuturePlanFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
                 viewPager.setCurrentItem(1);
             }
@@ -121,11 +133,16 @@ public class FuturePlanFragment extends Fragment {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                MainActivity main = (MainActivity) getContext();
-//                main.getCreatePlanFragment().updateView();
-                viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
-                viewPager.setCurrentItem(1);
-            }
+                try {
+                    viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+                    viewPager.setCurrentItem(1);
+                    MainActivity activity = (MainActivity) getActivity();
+                    activity.getCreatePlanFragment().updateView(allPlans[position]);
+                } catch (JSONException e) {
+                    Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+
+           }
         });
         return v;
 

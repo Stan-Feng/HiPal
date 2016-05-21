@@ -45,7 +45,6 @@ public class MainActivityFragment extends Fragment {
         } catch (NullPointerException e) {
             this.userToken = null;
         }
-//        Toast.makeText(getContext(), getActivity().getIntent().getExtras().getString("token"), Toast.LENGTH_LONG).show();
 
         viewPager = (ViewPager) container.findViewById(R.id.pager);
         nn = "niuniu";

@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +40,6 @@ public class CreatePlan extends Fragment {
     private GridView gridview_label;
 
     private String[] label = new String[]{"taste","movie","sport","music","sleep","idol"};
-    private String[] refreshLabels;
     private int refreshFlag = 0;
     private String[] allLabels;
     private HashMap<Integer, Boolean> selectedLabels;
@@ -47,7 +48,6 @@ public class CreatePlan extends Fragment {
             R.drawable.minions3,R.drawable.minions4,R.drawable.minions5,R.drawable.minions6};
     private Spinner departure_spinner;
     private Spinner destination_spinner;
-    private String planID;
 
     private ArrayAdapter<CharSequence> adapter1;
     private ArrayAdapter<CharSequence> adapter2;
@@ -115,6 +115,8 @@ public class CreatePlan extends Fragment {
             @Override
 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (view == null || parent == null) return;
+
                 TextView tv = (TextView)view;
                 tv.setTextColor(getResources().getColor(R.color.colorW));    //设置颜色
 
@@ -280,11 +282,6 @@ public class CreatePlan extends Fragment {
         return v;
     }
 
-    private String[] onRefreshButtonClick () {
-
-        return null;
-    }
-
     private void initLabels () {
         String method = "GET";
         String url = "http://45.79.1.223:3000/api/label";
@@ -331,7 +328,22 @@ public class CreatePlan extends Fragment {
         return selectedLabelPos;
     }
 
-    public void updateView () {
+    public void updateView (Plan newPlan) throws JSONException {
+        String starDate = newPlan.getStartDate();
+        String endDate = newPlan.getEndDate();
+        String destination = newPlan.getCity().getString("name");
+        JSONObject label = newPlan.getLabels().getJSONObject(0);
+        String departure = newPlan.getUser().getString("city");
 
+        destination_date_text_view.setText(endDate);
+        departure_date_text_view.setText(starDate);
+
+//        adapter1.clear();
+//        adapter1.add(departure);
+//        adapter1.notifyDataSetChanged();
+
+//        adapter2.clear();
+//        adapter2.add(destination);
+//        adapter2.notifyDataSetChanged();
     }
 }

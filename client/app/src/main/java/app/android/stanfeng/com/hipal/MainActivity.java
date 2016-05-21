@@ -14,13 +14,12 @@ public class MainActivity extends AppCompatActivity {
 
     private JSONObject user;
     private CreatePlan createPlanFragment;
+    private Plan[] allPlans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Profile"));
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
 
-        this.createPlanFragment = (CreatePlan) adapter.getItem(1);
 
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -53,9 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        createPlanFragment = (CreatePlan) adapter.getItem(1);
     }
 
     @Override
@@ -92,5 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
     public CreatePlan getCreatePlanFragment() {
         return createPlanFragment;
+    }
+
+    public Plan[] getAllPlans() {
+        return allPlans;
+    }
+
+    public void setAllPlans(Plan[] allPlans) {
+        this.allPlans = allPlans;
     }
 }
