@@ -6,7 +6,7 @@ Member: Anan Wang, Cao Min, Junwen Feng, Mengyu Wang
 * Write documentation
 
 TODO:
-1. Future Plan jump to edited createPlan fragment with data
+1. Future Plan jump to edited createPlan fragment with data, done
 2. Past Plan jump to a new activity only contains one share_post_item
 3. Edit information fragment created with already-used data then edit it.
 4. Fix order error in serach user results page
