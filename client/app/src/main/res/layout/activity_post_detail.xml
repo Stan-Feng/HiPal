@@ -7,28 +7,115 @@
     android:fitsSystemWindows="true"
     tools:context="app.android.stanfeng.com.hipal.PostDetail">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#fff">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=" "
+            android:id="@+id/textView2"
+            />
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="10dp"
+            android:maxHeight="60dp"
+            android:maxWidth="60dp"
+            android:src="@drawable/share1"/>
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11111"
+            android:textColor="#202020"
+            android:layout_marginLeft="15dp"
+            android:textSize="22dp"
+            android:layout_below="@+id/textView2"
+             />
 
-    <include layout="@layout/content_post_detail" />
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1111"
+            android:layout_marginLeft="15dp"
+            android:textSize="18dp"
+            android:layout_below="@+id/ID"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/images">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/images1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/comment"
+            android:layout_toRightOf="@+id/avatar"
+            android:adjustViewBounds="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:src="@drawable/image1"/>
 
+        <ImageView
+            android:id="@+id/images2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/comment"
+            android:layout_toRightOf="@+id/images1"
+            android:adjustViewBounds="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:src="@drawable/image1"/>
+
+        <ImageView
+            android:id="@+id/images3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/images1"
+            android:layout_toRightOf="@+id/avatar"
+            android:adjustViewBounds="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:src="@drawable/image1"/>
+
+        <ImageView
+            android:id="@+id/images4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/images2"
+            android:layout_toRightOf="@+id/images3"
+            android:adjustViewBounds="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:src="@drawable/image1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=" "
+            android:id="@+id/textView3"
+            android:layout_below="@+id/images4"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:text=" "
+            android:id="@+id/textView4"
+            android:background="#eee"
+            android:layout_below="@+id/textView3"
+            />
+
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
