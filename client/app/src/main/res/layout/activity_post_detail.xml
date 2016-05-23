@@ -1,121 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="app.android.stanfeng.com.hipal.PostDetail">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="app.android.stanfeng.com.hipal.PostDetail"
+    android:background="#fff">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:background="#fff">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=" "
-            android:id="@+id/textView2"
-            />
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentLeft="true"
-            android:adjustViewBounds="true"
-            android:layout_marginLeft="10dp"
-            android:maxHeight="60dp"
-            android:maxWidth="60dp"
-            android:src="@drawable/share1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" "
+        android:id="@+id/textView2"
+        />
 
-        <TextView
-            android:id="@+id/ID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="11111"
-            android:textColor="#202020"
-            android:layout_marginLeft="15dp"
-            android:textSize="22dp"
-            android:layout_below="@+id/textView2"
-             />
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="60dp"
+        android:maxWidth="60dp"
+        android:src="@drawable/niuniu_duanwu"
+        android:layout_below="@+id/detail_nickname"
+        android:layout_alignLeft="@+id/images1"
+        android:layout_alignStart="@+id/images1" />
 
-        <TextView
-            android:id="@+id/comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1111"
-            android:layout_marginLeft="15dp"
-            android:textSize="18dp"
-            android:layout_below="@+id/ID"
-            />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/images">
+    <TextView
+        android:id="@+id/detail_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nickname"
+        android:textColor="#202020"
+        android:textSize="22sp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
-        </RelativeLayout>
-        <ImageView
-            android:id="@+id/images1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/comment"
-            android:layout_toRightOf="@+id/avatar"
-            android:adjustViewBounds="true"
-            android:maxHeight="100dp"
-            android:maxWidth="100dp"
-            android:src="@drawable/image1"/>
-
-        <ImageView
-            android:id="@+id/images2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/comment"
-            android:layout_toRightOf="@+id/images1"
-            android:adjustViewBounds="true"
-            android:maxHeight="100dp"
-            android:maxWidth="100dp"
-            android:src="@drawable/image1"/>
-
-        <ImageView
-            android:id="@+id/images3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/images1"
-            android:layout_toRightOf="@+id/avatar"
-            android:adjustViewBounds="true"
-            android:maxHeight="100dp"
-            android:maxWidth="100dp"
-            android:src="@drawable/image1"/>
-
-        <ImageView
-            android:id="@+id/images4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/images2"
-            android:layout_toRightOf="@+id/images3"
-            android:adjustViewBounds="true"
-            android:maxHeight="100dp"
-            android:maxWidth="100dp"
-            android:src="@drawable/image1"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=" "
-            android:id="@+id/textView3"
-            android:layout_below="@+id/images4"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:text=" "
-            android:id="@+id/textView4"
-            android:background="#eee"
-            android:layout_below="@+id/textView3"
-            />
+    <TextView
+        android:id="@+id/detail_signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Signature"
+        android:textSize="20dp"
+        android:layout_alignRight="@+id/images2"
+        android:layout_alignEnd="@+id/images2"
+        android:layout_alignBottom="@+id/avatar"
+        android:layout_alignLeft="@+id/detail_nickname"
+        android:layout_alignStart="@+id/detail_nickname" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/images">
 
     </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+    <ImageView
+        android:id="@+id/images1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="170dp"
+        android:maxWidth="170dp"
+        android:src="@drawable/image1"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/detail_signature"
+        android:layout_toRightOf="@+id/images"
+        android:layout_toEndOf="@+id/images" />
+
+    <ImageView
+        android:id="@+id/images2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="170dp"
+        android:maxWidth="170dp"
+        android:src="@drawable/image2"
+        android:layout_alignTop="@+id/images1"
+        android:layout_toRightOf="@+id/images1"
+        android:layout_toEndOf="@+id/images1" />
+
+    <ImageView
+        android:id="@+id/images3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="170dp"
+        android:maxHeight="170dp"
+        android:src="@drawable/image4"
+        android:layout_below="@+id/images1"
+        android:layout_alignLeft="@+id/images1"
+        android:layout_alignStart="@+id/images1" />
+
+    <ImageView
+        android:id="@+id/images4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="160dp"
+        android:maxWidth="170dp"
+        android:src="@drawable/image9"
+        android:layout_below="@+id/images2"
+        android:layout_alignLeft="@+id/images2"
+        android:layout_alignStart="@+id/images2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" "
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:text=" "
+        android:id="@+id/textView4"
+        android:background="#eee" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:id="@+id/detail_back"
+        android:text="Back"
+        android:background="@color/colorButtonBackground2"
+        android:layout_below="@+id/images3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="51dp" />
+
+</RelativeLayout>

@@ -11,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +26,7 @@ import app.android.stanfeng.com.hipal.utils.Callback;
 
 public class ShareFragment extends Fragment {
 
+    private int count = 0;
     private String[] ID = new String[]{"Cindy", "Mary", "James", "John", "Linda", "Helen", "Gary", "Ann", "Diana", "Fred"};
     private String[] comment = new String[]{"There are many beautiful scenic spots in this city.", "So beautiful!!",
             "There are many beautiful scenic spots in this city.", "So beautiful!!",
@@ -61,10 +60,9 @@ public class ShareFragment extends Fragment {
                 if (parent == null || view == null) {
                     return;
                 }
-
                 // *************** Connect to database
                 String method = "GET";
-                String url = "http://45.79.1.223:3000/api/posts/Suzhou";
+                String url = "http://45.79.1.223:3000/api/posts/";
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
 
@@ -76,7 +74,11 @@ public class ShareFragment extends Fragment {
                         String text = null;
 
                         try {
-                            text = results.getJSONObject(0).getJSONArray("posts").getJSONObject(0).getString("text");
+                            if (count > 4) {
+                                count = 0;
+                            }
+                            text = results.getJSONObject(count).getString("text");
+                            count++;
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -134,7 +136,7 @@ public class ShareFragment extends Fragment {
         }
         simple = new SimpleAdapter(container.getContext(), listItem,
                 R.layout.fragment_share_item_view, new String[] { "ID","Avatar","Comment","Images1","Images2","Images3","Images4"},
-                new int[] {R.id.ID,R.id.avatar,R.id.comment,R.id.images1,R.id.images2,R.id.images3,R.id.images4});
+                new int[] {R.id.detail_nickname,R.id.avatar,R.id.detail_signature,R.id.images1,R.id.images2,R.id.images3,R.id.images4});
         ListView listView = (ListView) r.findViewById(R.id.ListView);
         listView.setAdapter(simple);
 

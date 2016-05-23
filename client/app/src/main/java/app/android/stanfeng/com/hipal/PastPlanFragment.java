@@ -50,8 +50,6 @@ public class PastPlanFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -68,6 +66,12 @@ public class PastPlanFragment extends Fragment {
 
         MainActivity main = (MainActivity) getContext();
         final Plan[] allPlans = main.getAllPlans();
+        if (allPlans == null) {
+            main.getNewPlans();
+            cancel.performClick();
+
+            return v;
+        }
         LinkedList<Plan> archivedPlans = new LinkedList<Plan>();
 
         for (int i = 0; i < allPlans.length; i++) {
@@ -81,7 +85,7 @@ public class PastPlanFragment extends Fragment {
                 Plan p = archivedPlans.get(j);
                 item2.put("time", p.getStartDate() + " --- " + p.getEndDate());
                 item2.put("play", play2[j % 5]);
-                item2.put("place","from " + main.getUser().getString("city") + " to " + p.getCity());
+                item2.put("place","from " + main.getUser().getString("city") + " to " + p.getCity().getString("name"));
                 listItem2.add(item2);
             } catch (JSONException e) {
                 Log.e("JSON Parse Error", e.toString());
@@ -96,10 +100,16 @@ public class PastPlanFragment extends Fragment {
         lv2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
-//                viewPager.setCurrentItem(1);
+                MainActivity main = (MainActivity) getContext();
                 Intent detail = new Intent(getActivity(), PostDetail.class);
-                detail.putExtra("id", allPlans[position].get_id());
+                try {
+                    detail.putExtra("nickname", main.getUser().getString("nickname"));
+                    detail.putExtra("signature", main.getUser().getString("signature"));
+                    detail.putExtra("city", allPlans[position].getCity().getString("name"));
+                    detail.putExtra("token", getActivity().getIntent().getExtras().getString("token"));
+                } catch (JSONException e) {
+                    Log.e("JSON parser error", e.toString());
+                }
                 startActivity(detail);
             }
         });
@@ -117,8 +127,6 @@ public class PastPlanFragment extends Fragment {
         });
 
         return v;
-
-
     }
 
     public interface OnButtonClick {

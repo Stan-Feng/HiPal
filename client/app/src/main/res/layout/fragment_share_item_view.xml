@@ -22,7 +22,7 @@
         android:src="@drawable/share1"/>
 
     <TextView
-        android:id="@+id/ID"
+        android:id="@+id/detail_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="11111"
@@ -33,13 +33,13 @@
         android:layout_toEndOf="@+id/avatar" />
 
     <TextView
-        android:id="@+id/comment"
+        android:id="@+id/detail_signature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1111"
         android:layout_marginLeft="15dp"
         android:textSize="18dp"
-        android:layout_below="@+id/ID"
+        android:layout_below="@+id/detail_nickname"
         android:layout_toEndOf="@+id/avatar"
         />
     <RelativeLayout
@@ -52,7 +52,7 @@
         android:id="@+id/images1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/comment"
+        android:layout_below="@+id/detail_signature"
         android:layout_toRightOf="@+id/avatar"
         android:adjustViewBounds="true"
         android:maxHeight="100dp"
@@ -63,7 +63,7 @@
         android:id="@+id/images2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/comment"
+        android:layout_below="@+id/detail_signature"
         android:layout_toRightOf="@+id/images1"
         android:adjustViewBounds="true"
         android:maxHeight="100dp"

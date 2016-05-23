@@ -103,17 +103,20 @@ public class UserResultActivity extends AppCompatActivity {
                 }
 
                 String currNickname = getIntent().getExtras().getString("nickname");
-                for (int i = 0; i < users.length; i++) {
+                for (int i = 0, j = 0; i < users.length; i++) {
                     // TODO: Make filter of login user
                     try {
-                        if (currNickname.equals(users[i].getNickname())) continue;
+                        if (currNickname.equals(users[i].getNickname())) {
+                            j++;
+                            continue;
+                        }
                     } catch (NullPointerException e) {
                         continue;
                     }
                     Map<String, Object> item = new HashMap<String, Object>();
-                    item.put("user_image", user_image[i]);
-                    item.put("user_name", users[i].getNickname());
-                    item.put("user_id", users[i].getId());
+                    item.put("user_image", user_image[i - j]);
+                    item.put("user_name", users[i - j].getNickname());
+                    item.put("user_id", users[i - j].getId());
                     gridView.add(item);
                 }
 
