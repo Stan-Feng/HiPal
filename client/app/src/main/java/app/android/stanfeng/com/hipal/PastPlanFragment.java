@@ -1,7 +1,9 @@
 package app.android.stanfeng.com.hipal;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android .support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,10 +18,20 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import app.android.stanfeng.com.hipal.utils.AJAX;
+import app.android.stanfeng.com.hipal.utils.Callback;
 
 
 public class PastPlanFragment extends Fragment {
@@ -54,13 +66,27 @@ public class PastPlanFragment extends Fragment {
             }
         });
 
+        MainActivity main = (MainActivity) getContext();
+        final Plan[] allPlans = main.getAllPlans();
+        LinkedList<Plan> archivedPlans = new LinkedList<Plan>();
+
+        for (int i = 0; i < allPlans.length; i++) {
+            if (!allPlans[i].getIsArchived()) archivedPlans.add(allPlans[i]);
+        }
+
         List<Map<String, Object>> listItem2 = new ArrayList<Map<String, Object>>();
-        for (int j = 0; j < pastTime.length; j++) {
-            Map<String, Object> item2 = new HashMap<String, Object>();
-            item2.put("time", pastTime[j]);
-            item2.put("play", play2[j]);
-            item2.put("place",PastPlace[j]);
-            listItem2.add(item2);
+        for (int j = 0; j < archivedPlans.size(); j++) {
+            try {
+                Map<String, Object> item2 = new HashMap<String, Object>();
+                Plan p = archivedPlans.get(j);
+                item2.put("time", p.getStartDate() + " --- " + p.getEndDate());
+                item2.put("play", play2[j % 5]);
+                item2.put("place","from " + main.getUser().getString("city") + " to " + p.getCity());
+                listItem2.add(item2);
+            } catch (JSONException e) {
+                Log.e("JSON Parse Error", e.toString());
+            }
+
         }
         SimpleAdapter simple2 = new SimpleAdapter(container.getContext(), listItem2,
                 R.layout.fragment_main_simple_item, new String[] { "time","play","place"},
@@ -70,8 +96,11 @@ public class PastPlanFragment extends Fragment {
         lv2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
-                viewPager.setCurrentItem(1);
+//                ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+//                viewPager.setCurrentItem(1);
+                Intent detail = new Intent(getActivity(), PostDetail.class);
+                detail.putExtra("id", allPlans[position].get_id());
+                startActivity(detail);
             }
         });
 

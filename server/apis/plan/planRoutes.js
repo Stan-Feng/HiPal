@@ -11,6 +11,6 @@ router.route('/')
   .post(controller.post);
 
 router.route('/:token')
-  .get(checkUser, controller.getPlanByUser);
+  .get(controller.getPlanByUser);
 
 module.exports = router;

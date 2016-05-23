@@ -360,6 +360,5 @@ public class CreatePlan extends Fragment {
         gridView.set(0, item);
         simple.notifyDataSetChanged();
         gridview_label.performItemClick(gridview_label.getChildAt(0), 0, gridview_label.getItemIdAtPosition(0));
-        Log.e("View", simple.getView(0, null, null).toString());
     }
 }
