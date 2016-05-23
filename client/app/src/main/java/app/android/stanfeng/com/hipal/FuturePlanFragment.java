@@ -102,7 +102,8 @@ public class FuturePlanFragment extends Fragment {
                         if (plan.getBoolean("isArchieved")) continue;
                         item.put("time", startDate + " --- " + endDate);
                         item.put("play", play1[i % 5]);
-                        item.put("place", plan.getJSONObject("city").getString("name"));
+                        item.put("place", plan.getJSONObject("city").getString("name") + " to "
+                                + plan.getJSONObject("user").getString("city"));
                         listItem1.add(item);
 
                     }

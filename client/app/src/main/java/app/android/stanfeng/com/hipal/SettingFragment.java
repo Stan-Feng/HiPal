@@ -18,6 +18,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +34,7 @@ public class SettingFragment extends Fragment {
     private Button cancel,edit,jump4;
     private OnButtonClick onButtonClick;
     private String[] leftContent = {"Name", "wechatID", "Signature", "Gender", "City"};
-    private String[] rightContent = {"Anan Wang", "Anan_wechatID", "I am Wang Anan", "Female", "Suzhou"};
+    private String[] rightContent = new String[5];
 
     public SettingFragment() {
     }
@@ -55,7 +58,18 @@ public class SettingFragment extends Fragment {
             }
         });
 
+        MainActivity main = (MainActivity) getContext();
+        JSONObject user = main.getUser();
 
+        try {
+            rightContent[0] = user.getString("nickname");
+            rightContent[1] = user.getString("wechatID");
+            rightContent[2] = user.getString("signature");
+            rightContent[3] = user.getString("gender");
+            rightContent[4] = user.getString("city");
+        } catch (JSONException e) {
+            Log.e("JSON Parse Error ", e.toString());
+        }
 
         String s = "Profile Photo";
         tv5 = (TextView) v.findViewById(R.id.nick);

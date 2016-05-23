@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class EditProfileFragment extends Fragment {
 
@@ -29,15 +32,12 @@ public class EditProfileFragment extends Fragment {
     public EditProfileFragment() {
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+        MainActivity main = (MainActivity) getContext();
+        JSONObject user = main.getUser();
+
         View v = inflater.inflate(R.layout.fragment_edit_profile, container, false);
         cancel = (Button) v.findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +51,13 @@ public class EditProfileFragment extends Fragment {
         text1 = (TextView) v.findViewById(R.id.nick2);
         text1.setText(tx1);
         tip1 = (EditText) v.findViewById(R.id.tip1);
+
+        try {
+            tip1.setText(user.getString("nickname"));
+        } catch (JSONException e) {
+            Log.e("JSON Error", e.toString());
+        }
+
         tip1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
@@ -68,6 +75,12 @@ public class EditProfileFragment extends Fragment {
         text2 = (TextView) v.findViewById(R.id.signature2);
         text2.setText(tx2);
         tip2 = (EditText) v.findViewById(R.id.tip2);
+        try {
+            tip2.setText(user.getString("signature"));
+        } catch (JSONException e) {
+            Log.e("JSON Error", e.toString());
+        }
+
         tip2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
@@ -81,10 +94,16 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-        String tx3 = "  Region";
+        String tx3 = " City";
         text3 = (TextView) v.findViewById(R.id.region);
         text3.setText(tx3);
         tip3 = (EditText) v.findViewById(R.id.tip3);
+        try {
+            tip3.setText(user.getString("city"));
+        } catch (JSONException e) {
+            Log.e("JSON Error", e.toString());
+        }
+
         tip3.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
@@ -102,6 +121,12 @@ public class EditProfileFragment extends Fragment {
         text4 = (TextView) v.findViewById(R.id.gender);
         text4.setText(tx4);
         tip4 = (EditText) v.findViewById(R.id.tip4);
+        try {
+            tip4.setText(user.getString("gender"));
+        } catch (JSONException e) {
+            Log.e("JSON Error", e.toString());
+        }
+
         tip4.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override

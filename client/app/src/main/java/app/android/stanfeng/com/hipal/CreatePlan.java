@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -338,12 +339,27 @@ public class CreatePlan extends Fragment {
         destination_date_text_view.setText(endDate);
         departure_date_text_view.setText(starDate);
 
-//        adapter1.clear();
-//        adapter1.add(departure);
-//        adapter1.notifyDataSetChanged();
+        for (int i = 0; i < 19; i++) {
+            if (departure_spinner.getItemAtPosition(i).equals(destination)) {
+                departure_spinner.setSelection(i);
+                break;
+            }
+        }
 
-//        adapter2.clear();
-//        adapter2.add(destination);
-//        adapter2.notifyDataSetChanged();
+        for (int i = 0; i < 19; i++) {
+            if (destination_spinner.getItemAtPosition(i).equals(departure)) {
+                destination_spinner.setSelection(i);
+                break;
+            }
+        }
+
+        String labelName = label.getString("name");
+        Map<String, Object> item = new HashMap<String, Object>();
+        item.put("label_text", labelName);
+        item.put("label_image", label_image[0]);
+        gridView.set(0, item);
+        simple.notifyDataSetChanged();
+        gridview_label.performItemClick(gridview_label.getChildAt(0), 0, gridview_label.getItemIdAtPosition(0));
+        Log.e("View", simple.getView(0, null, null).toString());
     }
 }
