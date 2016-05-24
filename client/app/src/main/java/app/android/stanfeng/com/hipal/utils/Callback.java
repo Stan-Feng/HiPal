@@ -1,3 +1,4 @@
+// Created by Junwen Feng, Anan Wang, Mengyu Wang and Min Cao
 package app.android.stanfeng.com.hipal.utils;
 
 import org.json.JSONArray;
