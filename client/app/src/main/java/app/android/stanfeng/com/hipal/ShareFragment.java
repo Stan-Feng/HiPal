@@ -1,3 +1,4 @@
+// Created by Mengyu Wang
 package app.android.stanfeng.com.hipal;
 
 import android.os.Bundle;

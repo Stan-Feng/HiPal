@@ -1,3 +1,4 @@
+// Created by Min Cao
 package app.android.stanfeng.com.hipal;
 
 import android.app.DatePickerDialog;
@@ -282,7 +283,7 @@ public class CreatePlan extends Fragment {
 
         return v;
     }
-
+    // Create by Anan Wang
     private void initLabels () {
         String method = "GET";
         String url = "http://45.79.1.223:3000/api/label";
@@ -306,6 +307,7 @@ public class CreatePlan extends Fragment {
         // Sending the request
         req.execute();
     }
+    // Create by Anan Wang ---- end
 
     private int[] unselectedPosition () {
         int selectedNum = 0;

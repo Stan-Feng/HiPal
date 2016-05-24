@@ -1,3 +1,4 @@
+// Create by Min Cao
 package app.android.stanfeng.com.hipal;
 
 import android.content.Intent;
