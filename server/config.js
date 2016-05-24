@@ -1,3 +1,4 @@
+// Create by Junwen Feng
 const _ = require('lodash');
 const devDB = 'mongodb://localhost/hipaldev';
 const prodDB = 'mongodb://localhost/hipalprod';

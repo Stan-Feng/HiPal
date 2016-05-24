@@ -1,3 +1,4 @@
+// Create by Junwen Feng
 const User = require('../apis/user/userModel');
 const signToken = require('./auth').signToken;
 

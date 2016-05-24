@@ -1,3 +1,4 @@
+// Create by Junwen Feng
 const Label = require('./labelModel');
 
 module.exports = {

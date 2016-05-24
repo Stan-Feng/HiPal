@@ -1,3 +1,4 @@
+// // Create by Anan Wang
 const cities = [
   'Beijing', 'Dalian', 'Guangzhou', 'Hunan', 'Shenzhen',
   'Suzhou', 'Tianjing', 'Xian', 'Xiamen', 'Shanghai',

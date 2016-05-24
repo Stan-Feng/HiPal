@@ -1,4 +1,4 @@
-// Created by Min Cao
+// Created by Min Cao, Anan Wang created initLabels() for extracting data from server
 package app.android.stanfeng.com.hipal;
 
 import android.app.DatePickerDialog;
