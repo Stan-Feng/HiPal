@@ -145,8 +145,20 @@ public class EditProfileFragment extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MainActivity main = (MainActivity) getContext();
+                JSONObject user = main.getUser();
+                try {
+                    user.remove("nickname");
+                    user.put("nickname", tip1.getText().toString());
+                    main.setUser(user);
+                } catch (JSONException e) {
+                    Log.e("JSON Parser Error", e.toString());
+                }
+
                 Toast.makeText(getContext(), "Save Change Clicked", Toast.LENGTH_LONG).show();
-                getActivity().onBackPressed();
+
+                main.getSettingFragment().updateView();
+                main.onBackPressed();
             }
         });
 

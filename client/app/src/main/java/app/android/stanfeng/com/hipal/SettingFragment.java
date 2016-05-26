@@ -2,6 +2,7 @@
 package app.android.stanfeng.com.hipal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android .support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class SettingFragment extends Fragment {
@@ -36,6 +38,8 @@ public class SettingFragment extends Fragment {
     private OnButtonClick onButtonClick;
     private String[] leftContent = {"Name", "wechatID", "Signature", "Gender", "City"};
     private String[] rightContent = new String[5];
+    private SimpleAdapter simple3;
+    private List<Map<String, Object>> listItem3;
 
     public SettingFragment() {
     }
@@ -75,14 +79,14 @@ public class SettingFragment extends Fragment {
         String s = "Profile Photo";
         tv5 = (TextView) v.findViewById(R.id.nick);
         tv5.setText(s);
-        List<Map<String, Object>> listItem3 = new ArrayList<Map<String, Object>>();
+        listItem3 = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < leftContent.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("left", leftContent[i]);
             item.put("right", rightContent[i]);
             listItem3.add(item);
         }
-        SimpleAdapter simple3 = new SimpleAdapter(container.getContext(), listItem3,
+        simple3 = new SimpleAdapter(container.getContext(), listItem3,
                 R.layout.fragment_setting_list, new String[]{"left", "right"},
                 new int[]{R.id.left, R.id.right});
         lv3 = (ListView) v.findViewById(R.id.listView3);
@@ -103,6 +107,19 @@ public class SettingFragment extends Fragment {
         return v;
 
 
+    }
+
+    public void updateView () {
+        MainActivity main = (MainActivity) getContext();
+        try {
+            HashMap<String, Object> item = new HashMap<String, Object>();
+            item.put("left", "nickname");
+            item.put("right", main.getUser().getString("nickname"));
+            listItem3.set(0, item);
+            simple3.notifyDataSetChanged();
+        } catch (JSONException e) {
+            Log.e("JSON Parse Error", e.toString());
+        }
     }
 
     public interface OnButtonClick {

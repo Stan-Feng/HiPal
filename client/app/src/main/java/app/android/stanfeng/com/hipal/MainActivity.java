@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     private JSONObject user;
     private CreatePlan createPlanFragment;
+    private MainActivityFragment profilePage;
+    private SettingFragment settingFragment;
+    private ViewPager pager;
     private Plan[] allPlans = null;
 
     @Override
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) this.findViewById(R.id.pager);
+        pager = viewPager;
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
 
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createPlanFragment = (CreatePlan) adapter.getItem(1);
+        profilePage = (MainActivityFragment) adapter.getItem(0);
     }
 
     @Override
@@ -140,5 +145,21 @@ public class MainActivity extends AppCompatActivity {
 
         // Sending the request
         req.execute();
+    }
+
+    public MainActivityFragment getProfilePage() {
+        return profilePage;
+    }
+
+    public ViewPager getPager() {
+        return pager;
+    }
+
+    public SettingFragment getSettingFragment() {
+        return settingFragment;
+    }
+
+    public void setSettingFragment(SettingFragment settingFragment) {
+        this.settingFragment = settingFragment;
     }
 }

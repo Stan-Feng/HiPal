@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import app.android.stanfeng.com.hipal.utils.AJAX;
 import app.android.stanfeng.com.hipal.utils.Callback;
@@ -100,8 +101,11 @@ public class MainActivityFragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SettingFragment setting = new SettingFragment();
+                MainActivity main = (MainActivity) getContext();
+                main.setSettingFragment(setting);
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_main, new SettingFragment())
+                        .replace(R.id.fragment_main, setting)
                         .addToBackStack(null)
                         .commit();
             }
